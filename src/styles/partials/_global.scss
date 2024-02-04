@@ -1,0 +1,12 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/typography';
+@import '../../styles/partials/variables';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    color: $brainflix-black;
+}
+
+body {
+    margin: 0;
+}

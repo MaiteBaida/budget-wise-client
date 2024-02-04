@@ -1,0 +1,95 @@
+//Media Queries
+
+//Tablet 768px - 1279px 
+@mixin tablet {
+    @media (min-width: 48rem) {
+        @content;
+    }
+}
+//1280px and above
+@mixin desktop {
+    @media (min-width: 80rem){
+        @content;
+    } 
+}
+
+// Mobile Text styles
+
+@mixin txt-mob-header {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 1.5rem; //24px
+    font-weight: 600; 
+    line-height: 2rem; //32px
+}
+
+@mixin txt-mob-sect-header {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.75rem; //12px
+    font-weight: 600;
+    line-height: 1.25rem; //20px
+}
+
+@mixin txt-mob-subheader {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.813rem; //13px
+    font-weight: 600;
+    line-height: 1.125rem; //18px
+}
+
+@mixin txt-mob-body {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.813rem; //13px
+    font-weight: 400;
+    line-height: 1.125rem; //18px
+}
+
+@mixin txt-mob-labels {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.625rem; //10px
+    font-weight: 600; 
+    line-height: 1.25rem; //20px
+}
+
+// //  Desktop & Tablet text styles
+
+@mixin txt-page-header {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 2.063rem; //33px
+    font-weight: 600; 
+    line-height: 2.75rem; //44px
+}
+
+@mixin txt-section-header {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.75rem; //12px
+    font-weight: 700; 
+    line-height: 1.25rem; //20px 
+}
+
+@mixin txt-subheader {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.875rem; //14px
+    font-weight: 600; 
+    line-height: 1.375rem; //22px 
+}
+
+@mixin txt-body {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.875rem; //14px
+    font-weight: 400; 
+    line-height: 1.375rem; //22px 
+}
+
+@mixin txt-labels {
+    font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
+    font-size: 0.75rem; //12px
+    font-weight: 600;
+    line-height: 1.25rem; //20px 
+}
+
+//Other
+
+@mixin max-width {
+    max-width: 70rem;
+    margin: 0 auto;
+}
