@@ -8,7 +8,8 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route />
+        <Route path="/" element={<HomePage />}/>
+        {/* <Route path="/videos/:videoId" element={<User />}/> */}
       </Routes>
     </BrowserRouter>
   );
