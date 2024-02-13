@@ -1,13 +1,13 @@
 import "./Header.scss";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 
 function Header() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
   
     return (
       <header className="header">
-          <Logo/>
+          <Logo />
         <nav className="header__container"></nav>
       </header>
     );
