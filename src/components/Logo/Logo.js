@@ -1,5 +1,5 @@
 import './Logo.scss';
-import logo from '../../assets/svg/logo.svg';
+import logo from '../../assets/logo/logo.svg';
 import { Link } from "react-router-dom";
 
 function Logo() {

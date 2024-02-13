@@ -3,8 +3,6 @@ import "./Header.scss";
 import Logo from "../Logo/Logo";
 
 function Header() {
-    // const navigate = useNavigate();
-  
     return (
       <header className="header">
           <Logo />
