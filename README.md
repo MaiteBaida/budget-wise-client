@@ -58,12 +58,14 @@ Notes and Comments:
 ### Sitemap
 
 - Home page
-- Edit expenses table
-- View a table item
-- Edit a table item
-- Signup
-- Login
-<!-- Add site map png img here -->
+- Set up tables page
+- Edit expenses table page
+- View a table item page
+- Edit a table item page
+- Signup page
+- Login page
+![](site-map.pdf)
+<!-- Confirm Link -->
 
 ### Mockups
 
@@ -74,6 +76,10 @@ Notes and Comments:
 #### Signup Page
 
 ![](register.png)
+
+#### Set Up Tables Page
+
+![](login.png)
 
 #### Login Page
 
@@ -117,51 +123,56 @@ Notes and Comments:
 
 - Create migrations
 
-- Gather 15 sample café geolocations in two different cities
-
-- Create seeds with sample café data
+- Create seeds with user information for each table
 
 - Deploy client and server projects so all commits will be reflected in production
-
-- Feature: List cafés from a given location
-
-  - Implement list cafés page including location form
-  - Store given location in sessionStorage
-  - Create GET /cafes endpoint
-
-- Feature: View café
-
-  - Implement view café page
-  - Create GET /cafes/:id
-
-- Feature: Rate café
-
-  - Add form input to view café page
-  - Create POST /ratings
-  - States for add & update ratings
-
-- Feature: Home page
 
 - Feature: Create account
 
   - Implement register page + form
-  - Create POST /users/register endpoint
+  - Create POST /register endpoint
 
 - Feature: Login
 
   - Implement login page + form
-  - Create POST /users/login endpoint
+  - Create POST /login endpoint
+
+- Feature: Setup tables page
 
 - Feature: Implement JWT tokens
 
   - Server: Update expected requests / responses on protected endpoints
   - Client: Store JWT in local storage, include JWT on axios calls
 
+- Feature: Home page
+
+  - Implement user overview
+  - Implement fixed expenses table
+  - Implement essential expenses table
+  - Implement non-essential expenses table
+
+- Feature: Edit table page
+
+  - Implement edit table page
+  - Create PUT /table/:tableid/edit endpoint
+
+- Feature: View item page
+
+  - Implement view item page
+  - Create GET /expense/:id
+
+- Feature: Edit item page
+
+  - Implement view item page
+  - Create GET /expense/:id/edit
+
 - Bug fixes
 
 - DEMO DAY
 
 ## Nice-to-haves
+
+- Option to login with Google and Apple
 
 Estimate Savings Calculation:
 
