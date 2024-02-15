@@ -1,0 +1,19 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.input {
+    border-radius: 20px;
+    border: 1px solid $lightgray;
+    width: 100%;
+    height: 2.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    @include txt-mob-body;
+    @include tablet {
+        @include txt-body;
+        height: 2.375rem;
+    }
+    &::placeholder {
+        color: $silver;
+    } 
+}

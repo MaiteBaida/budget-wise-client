@@ -1,9 +1,14 @@
-import './Button.scss';
+import './Button.scss'
 
-function Button() {
-  return (
-    <button className='button'></button>
-  );
+const buttonStyles = {
+    cancel: 'button__cancel',
+    primary: 'button__primary',
+    secondary: 'button__secondary',
 }
 
+function Button({ type, onClick, label, style }) {
+    return (
+        <button type={type} onClick={onClick} className={`button ${buttonStyles[style]}`}>{label}</button>
+    )
+}
 export default Button;

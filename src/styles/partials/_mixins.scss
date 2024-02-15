@@ -1,3 +1,5 @@
+@import './variables';
+
 //Media Queries
 
 //Tablet 768px - 1279px 
@@ -48,11 +50,12 @@
     font-size: 0.625rem; //10px
     font-weight: 600; 
     line-height: 1.25rem; //20px
+    color: $silver;
 }
 
 // //  Desktop & Tablet text styles
 
-@mixin txt-page-header {
+@mixin txt-header {
     font-family: 'Almarai Bold', Arial, Helvetica, sans-serif;
     font-size: 2.063rem; //33px
     font-weight: 600; 
@@ -85,6 +88,7 @@
     font-size: 0.75rem; //12px
     font-weight: 600;
     line-height: 1.25rem; //20px 
+    color: $silver;
 }
 
 //Other

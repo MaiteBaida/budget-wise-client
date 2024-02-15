@@ -1,29 +1,22 @@
 @import '../../styles/partials/mixins';
 @import '../../styles/partials/variables';
 
-
-.input {
-    border-radius: 20px;
-    border: 1px solid $color-secondary-lining;
-    width: 100%;
-    height: 2.25rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    @include mobile-P2;
-    @include tablet {
-        @include desktab-P2;
-        height: 2.375rem;
+.login {
+    margin: 1rem;
+    border-radius: 6px;
+    border: 1px solid $lightgray;
+    padding: 1rem;
+    &__title {
+        @include txt-mob-header;
+        margin-top: 0;
+        @include tablet {
+            @include txt-header;
+        }
     }
-    &::placeholder {
-        color: $color-secondary-text;
-    } 
-    &__container {
-        position: relative;
-        width: 100%;
-    }
-    &__icon {
-        position: absolute;
-        right: 15px;
-        top: 7px;
+    &__label {
+        @include txt-mob-labels;
+        @include tablet {
+            @include txt-labels;
+        }
     }
 }
