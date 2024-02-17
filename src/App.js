@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/:id" element={<HomePage />}/> 
         <Route path="/login" element={<Login />}/> 
-        <Route path="/register" element={<Signup />}/> 
+        <Route path="/signup" element={<Signup />}/> 
         <Route path="/fixedexpenses/edit" element={<EditTable />}/>
         <Route path="/essentialexpenses/edit" element={<EditTable />}/> 
         <Route path="/nonessentialexpenses/edit" element={<EditTable />}/> 
