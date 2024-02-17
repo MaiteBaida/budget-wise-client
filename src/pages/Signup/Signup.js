@@ -11,6 +11,7 @@ function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirm_password, setConfirm_password] = useState('');
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
 
@@ -24,6 +25,10 @@ function Signup() {
 
   const handlePassword = (event) => {
     setPassword(event.target.value);
+  };
+
+  const handleConfirm_password = (event) => {
+    setConfirm_password(event.target.value);
   };
 
   const handleFirst_name = (event) => {
@@ -40,6 +45,11 @@ function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    if (password !== confirm_password) {
+      alert('Password and Confirm Password must match');
+      return; 
+    } 
 
     const newUser = {
       username,
@@ -60,10 +70,10 @@ function Signup() {
 
     processItem(response.data.items);
     console.log("success:", response.data)
-      nav('/inventories');
+      nav('/:id');
     } catch (error) {
-    console.error('Failed to add item:',  error);
-    alert("Failed to add item");
+    console.error('Failed to add user:',  error);
+    alert("Failed to add user");
     }
   }
 
@@ -110,7 +120,8 @@ function Signup() {
         <Input 
         customClass='signup__input' 
         name='confirm_password' 
-        placeholder='Confirm Password' />
+        placeholder='Confirm Password'
+        onChange={handleConfirm_password} />
         <div className='signup__buttons'>
           <Button 
           type='submit' 
