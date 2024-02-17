@@ -50,7 +50,7 @@ function Signup() {
     };
 
     try {
-    const response = await axios.post('http://localhost:8000/users', newUser);
+    const response = await axios.post('http://localhost:8000/user/register', newUser);
 
     setUsername('');
     setEmail('');
