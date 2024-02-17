@@ -2,12 +2,32 @@
 @import '../../styles/partials/variables';
 
 .login {
+    @include tablet {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    @include desktop {
+        @include max-width;
+    }
     &__card {
         margin: 1rem;
         border-radius: 6px;
         border: 1px solid $lightgray;
         padding: 1rem;
         background-color: $white;
+        @include tablet {
+            padding: 2.25rem;
+            margin: 2.25rem;
+            width: 26rem;
+        }
+        &-bottom {
+            @include tablet {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
     }
     &__title {
         color: $white;
@@ -16,6 +36,8 @@
         max-width: 50%;
         @include tablet {
             @include txt-header;
+            max-width: 30%;
+            margin: 0 2.25rem;
         }
     }
     &__label {
@@ -27,5 +49,22 @@
     }
     &__input {
         margin: 0.5rem 0;
+    }
+    &__button {
+        margin: 1.75rem 0 0.5rem 0;
+        &-container {
+            @include tablet {
+                width: 5rem;
+                order: 2;
+            }
+        }
+    }
+    &__txt {
+        text-align: center;
+        margin-bottom: 0;
+        @include tablet {
+            order: 1;
+            width: rem;
+        }
     }
 }

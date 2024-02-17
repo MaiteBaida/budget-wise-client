@@ -15,13 +15,13 @@
         background-color: $purple;
         border-style: none;
         &:hover {
-            background-color: $purple-hover;
+            background-color: $purple-dark;
         }
     }
     &__secondary {
         color: $silver;
         background-color: $white;
-        border: 1px solid $silver;
+        border: 1px solid $lightgray;
         &:hover {
             border: 1px solid $purple-dark;
             color: $purple-dark;
@@ -32,7 +32,7 @@
         background-color: $red;
         border-style: none;
         &:hover {
-            background-color: $red-hover;
+            background-color: $red-dark;
         }
     }
 }
