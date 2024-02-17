@@ -1,30 +1,26 @@
 import './Login.scss';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 function Login() {
-  const history = useHistory();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('/api/login', {
-        username,
-        password
-      });
-
-      // If authentication is successful, redirect to the appropriate page
-      history.push(`/${response.data.userId}`);
+      const response = await axios.get('http://localhost:8000/user', { username, password });
+      
+      //does this needs to be a .post and send the information to be checked on the backend??
+     
     } catch (error) {
       // If authentication fails, display an error message to the user
-      setErrorMessage('Invalid username or password');
+      
     }
   };
 
