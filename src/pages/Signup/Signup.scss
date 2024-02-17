@@ -1,0 +1,67 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.signup {
+    @include tablet {
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+    @include desktop {
+        @include max-width;
+    }
+    &__title {
+        color: $white;
+        @include txt-mob-header;
+        margin: 1rem 1rem 2rem 1rem;
+        max-width: 50%;
+        @include tablet {
+            @include txt-header;
+            max-width: 30%;
+            margin: 0 2.25rem;
+        }
+    }
+    &__card {
+        margin: 1rem;
+        border-radius: 45px;
+        border: 1px solid $lightgray;
+        padding: 2.25rem 1rem;
+        background-color: $white;
+        @include tablet {
+            padding: 2.25rem;
+            margin: 2.25rem;
+            width: 26rem;
+        }
+        &-bottom {
+            @include tablet {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    }
+    &__label {
+        @include txt-mob-labels;
+        color: $black;
+        @include tablet {
+            @include txt-labels;
+        }
+    }
+    &__input {
+        margin: 0.5rem 0;
+    }
+    &__buttons {
+        margin: 1rem 0;
+    }
+    &__button {
+        margin-top: 0.5rem;
+    }
+    &__txt {
+        text-align: center;
+        margin-bottom: 0;
+        @include tablet {
+            order: 1;
+            width: rem;
+        }
+    }
+}

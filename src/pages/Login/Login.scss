@@ -23,9 +23,9 @@
     }
     &__card {
         margin: 1rem;
-        border-radius: 6px;
+        border-radius: 45px;
         border: 1px solid $lightgray;
-        padding: 1rem;
+        padding: 2.25rem 1rem;
         background-color: $white;
         @include tablet {
             padding: 2.25rem;

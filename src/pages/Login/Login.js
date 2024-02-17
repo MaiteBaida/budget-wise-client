@@ -27,7 +27,7 @@ function Login() {
   return (
     <main className="login">
       <h1 className='login__title'>Login into your account</h1>
-      <section className='login__card'>
+      <form className='login__card'>
           <label className='login__label'>Username</label>
           <Input customClass='login__input' name='user_name' placeholder='Your Username' />
           <label className='login__label'>Password</label>
@@ -42,7 +42,7 @@ function Login() {
           </div>
           <p className='login__txt'>Don't have an account? <Link to={'/signup'}>Signup</Link></p>
         </div>        
-      </section>
+      </form>
     </main>
   );
 }
