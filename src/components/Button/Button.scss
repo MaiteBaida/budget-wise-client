@@ -23,16 +23,16 @@
         background-color: $white;
         border: 1px solid $silver;
         &:hover {
-            border: 1px solid $purple-text;
-            color: $purple-text;
+            border: 1px solid $purple-dark;
+            color: $purple-dark;
         }
     }
     &__cancel {
-        color: $color-primary-whiteGlobal;
-        background-color: $color-supporting-outStock;
+        color: $white;
+        background-color: $red;
         border-style: none;
         &:hover {
-            background-color: $color-backGround-nav;
+            background-color: $red-hover;
         }
     }
 }

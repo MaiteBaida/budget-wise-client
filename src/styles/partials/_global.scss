@@ -9,4 +9,9 @@
 
 body {
     margin: 0;
+    background-color: $purple-dark;
+    @include txt-mob-body;
+        @include tablet {
+            @include txt-body;
+        }
 }

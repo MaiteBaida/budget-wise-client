@@ -1,12 +1,16 @@
+import React from 'react';
 import './Input.scss';
 
-function Input() {
+function Input({ name, placeholder, customClass, onChange, value, type }) {
   return (
-    function Input({ name, placeholder, customClass, onChange, value, type }) {
-      return (
-          <input name={name} className={`input ${customClass}`} placeholder={placeholder} onChange={onChange} value={value} type={type}></input>
-      )
-  }
+    <input
+      name={name}
+      className={`input ${customClass}`}
+      placeholder={placeholder}
+      onChange={onChange}
+      value={value}
+      type={type}
+    />
   );
 }
 
