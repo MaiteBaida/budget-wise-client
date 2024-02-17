@@ -10,6 +10,17 @@
     @include desktop {
         @include max-width;
     }
+    &__title {
+        color: $white;
+        @include txt-mob-header;
+        margin: 1rem 1rem 2rem 1rem;
+        max-width: 50%;
+        @include tablet {
+            @include txt-header;
+            max-width: 30%;
+            margin: 0 2.25rem;
+        }
+    }
     &__card {
         margin: 1rem;
         border-radius: 6px;
@@ -27,17 +38,6 @@
                 align-items: center;
                 justify-content: space-between;
             }
-        }
-    }
-    &__title {
-        color: $white;
-        @include txt-mob-header;
-        margin: 1rem 1rem 2rem 1rem;
-        max-width: 50%;
-        @include tablet {
-            @include txt-header;
-            max-width: 30%;
-            margin: 0 2.25rem;
         }
     }
     &__label {
