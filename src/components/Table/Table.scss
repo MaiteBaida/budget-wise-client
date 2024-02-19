@@ -1,0 +1,71 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.table {
+    margin: 1rem;
+    border-radius: 35px;
+    border: 1px solid $lightgray;
+    padding: 2.25rem 1rem;
+    background-color: $white;
+    @include tablet {
+        padding: 2.25rem;
+        margin: 2.25rem;
+    }
+    @include desktop {
+        @include max-width;
+    }
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(3, 50%);
+        grid-template-areas: 
+                "header-expense"
+                "cell-expense"
+                "header-budget"
+                "cell-budget"
+                "header-spent"
+                "cell-spent"
+                "edit";
+        @include tablet {
+            grid-template-areas: 
+                "header-expense cell-expense header-budget none"
+                "cell-budget header-spent cell-spent edit";
+        }
+    }
+    &__title {
+        @include txt-section-header;
+        margin-top: 0;
+        @include tablet {
+            @include txt-section-header;
+        }
+    }
+    &__header {
+        &--expense {
+            grid-area: header-expense;
+        }
+        &--budget {
+            grid-area: header-budget;
+        }
+        &--spent {
+            grid-area: header-spent;
+        }
+    }
+    &__row {
+        border-bottom: 1px solid $lightgray;
+        padding: 0.5rem;
+    }
+    &__cell {
+        &--expense {
+            grid-area: header-expense;
+        }
+        &--budget {
+            grid-area: header-budget;
+        }
+        &--spent {
+            grid-area: header-spent;
+        }
+    }
+    &__edit-icon {
+        width: 2rem;
+        grid-area: edit;
+    }
+}
