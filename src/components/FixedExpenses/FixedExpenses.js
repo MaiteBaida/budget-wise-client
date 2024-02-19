@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import "./FixedExpenses.scss";
 
 function FixedExpenses() {
-  const [expensesList, setExpensesList] = useState([]);
+  const [expensesList, setExpensesList] = useState([{}, {}, {}]);
   //change userid to ${id when working}
   const getExpensesList = async () => {
     try {
@@ -18,12 +18,12 @@ function FixedExpenses() {
   };
 
   useEffect(() => {
-    getExpensesList();
+    // getExpensesList();
   }, []);
 
   return (
     <>
-      <Table list={getExpensesList()} />
+      <Table list={expensesList} />
     </>
   );
 }

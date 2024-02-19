@@ -14,55 +14,29 @@
     @include desktop {
         @include max-width;
     }
-    &__container {
-        display: grid;
-        grid-template-columns: repeat(3, 50%);
-        grid-template-areas: 
-                "header-expense"
-                "cell-expense"
-                "header-budget"
-                "cell-budget"
-                "header-spent"
-                "cell-spent"
-                "edit";
-        @include tablet {
-            grid-template-areas: 
-                "header-expense cell-expense header-budget none"
-                "cell-budget header-spent cell-spent edit";
-        }
-    }
     &__title {
         @include txt-section-header;
+        border-bottom: 1px solid $lightgray;
         margin-top: 0;
+        padding-bottom: 1rem;
         @include tablet {
             @include txt-section-header;
         }
     }
     &__header {
-        &--expense {
-            grid-area: header-expense;
-        }
-        &--budget {
-            grid-area: header-budget;
-        }
-        &--spent {
-            grid-area: header-spent;
-        }
+        padding: 0.5rem;
     }
     &__row {
         border-bottom: 1px solid $lightgray;
-        padding: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) 50px;
     }
     &__cell {
-        &--expense {
-            grid-area: header-expense;
-        }
-        &--budget {
-            grid-area: header-budget;
-        }
-        &--spent {
-            grid-area: header-spent;
-        }
+        padding: 0.5rem;
+    }
+    &__link {
+        display: flex;
+        justify-content: flex-end;
     }
     &__edit-icon {
         width: 2rem;
