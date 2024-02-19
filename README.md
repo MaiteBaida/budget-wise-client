@@ -104,6 +104,15 @@ Notes and Comments:
 
 ### Endpoints
 
+- /users : GET
+- /users/register : POST
+- /users/login : POST
+
+- /expenses : GET, POST
+- /expenses/:id : PUT, DELETE
+- /expenses/:id/entries : GET, POST
+- /expenses/:id/entries/:id : PUT, DELETE
+
 ### Auth
 
 - JWT auth
