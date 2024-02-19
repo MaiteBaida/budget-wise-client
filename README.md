@@ -66,8 +66,7 @@ Notes and Comments:
 - New expense entry
 - Signup page
 - Login page
-![](site-map.pdf)
-<!-- Confirm Link -->
+  ![](flow-chart-and-tables.pdf)
 
 ### Mockups
 
@@ -77,31 +76,31 @@ Notes and Comments:
 
 #### Signup Page
 
-![](register.png)
+![](signup.png)
 
 #### Login Page
 
-![](register.png)
+![](login.png)
 
 #### Add new expense page
 
-![](login.png)
+![](add-expense.png)
 
 #### Edit expense
 
-![](login.png)
+![](edit-expense.png)
 
 #### View/edit expense entries
 
-![](enter-location.png)
+![](entry-overview.png)
 
 #### New expense entry
 
-![](view-cafes.png)
+![](new-entry.png)
 
 ### Data
 
-![](sql-diagram.png)
+![](flow-chart-and-tables.pdf)
 
 ### Endpoints
 
