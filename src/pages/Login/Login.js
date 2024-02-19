@@ -31,7 +31,8 @@ function Login() {
           <label className='login__label'>Username</label>
           <Input customClass='login__input' name='user_name' placeholder='Your Username' />
           <label className='login__label'>Password</label>
-          <Input customClass='login__input' name='user_password' placeholder='Your Password'/>
+          <Input customClass='login__input' name='user_password' placeholder='Your Password'
+          type='password'/>
         <div>
           <label className='login__label'>Remember</label>
           <input type='radio' id='remember' value='remember'></input>

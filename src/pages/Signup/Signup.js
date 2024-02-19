@@ -115,13 +115,16 @@ function Signup() {
         customClass='signup__input' 
         name='password' 
         placeholder='Create Password' 
-        onChange={handlePassword}/>
+        onChange={handlePassword}
+        type='password'
+        />
         <label className='signup__label'>Confirm Password</label>
         <Input 
         customClass='signup__input' 
         name='confirm_password' 
         placeholder='Confirm Password'
-        onChange={handleConfirm_password} />
+        onChange={handleConfirm_password}
+        type='password' />
         <div className='signup__buttons'>
           <Button 
           type='submit' 
