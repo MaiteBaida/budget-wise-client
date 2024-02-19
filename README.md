@@ -42,14 +42,16 @@ Notes and Comments:
 - React
 - JavaScript
 - MySQL
-- Express
+- Node Express
 - Client libraries:
   - react
   - react-router
   - axios
 - Server libraries:
   - knex
-  - express
+  - node express
+  - json web token
+  - bcryptjs
 
 ### APIs
 
@@ -58,10 +60,10 @@ Notes and Comments:
 ### Sitemap
 
 - Home page
-- Set up tables page
-- Edit expenses table page
-- View a table item page
-- Edit a table item page
+- Add new expense
+- Edit expense
+- View/edit expense entries
+- New expense entry
 - Signup page
 - Login page
 ![](site-map.pdf)
@@ -77,25 +79,25 @@ Notes and Comments:
 
 ![](register.png)
 
-#### Set Up Tables Page
-
-![](login.png)
-
 #### Login Page
 
+![](register.png)
+
+#### Add new expense page
+
 ![](login.png)
 
-#### Edit expenses table
+#### Edit expense
+
+![](login.png)
+
+#### View/edit expense entries
 
 ![](enter-location.png)
 
-#### View a table item
+#### New expense entry
 
 ![](view-cafes.png)
-
-#### Edit a table item
-
-![](view-cafe.png)
 
 ### Data
 
@@ -106,10 +108,9 @@ Notes and Comments:
 ### Auth
 
 - JWT auth
-  - Before adding auth, all API requests will be using a fake user with id 1
-  - Added after core features have first been implemented
-  - Store JWT in localStorage, remove when a user logs out
-  - Add states for logged in showing different UI in places listed in mockups
+  - Auth will be added at the begging to the login and signup pages
+  - Store JWT in localStorage
+  - The only pages that don't require authentication are the Login and Signup pages, if not loged in, the user will be redirected to login page
 
 ## Roadmap
 
@@ -125,23 +126,18 @@ Notes and Comments:
 
 - Create seeds with user information for each table
 
-- Deploy client and server projects so all commits will be reflected in production
-
-- Feature: Create account
+- Feature: Signup
 
   - Implement register page + form
   - Create POST /register endpoint
+  - Manage authorization and authentication
+  - Client: Store JWT in local storage, include JWT on axios calls
 
 - Feature: Login
 
   - Implement login page + form
   - Create POST /login endpoint
-
-- Feature: Setup tables page
-
-- Feature: Implement JWT tokens
-
-  - Server: Update expected requests / responses on protected endpoints
+  - Manage authorization and authentication
   - Client: Store JWT in local storage, include JWT on axios calls
 
 - Feature: Home page
@@ -150,21 +146,27 @@ Notes and Comments:
   - Implement fixed expenses table
   - Implement essential expenses table
   - Implement non-essential expenses table
+  - Create GET /expenses
 
-- Feature: Edit table page
+- Feature: Add new expense page
 
-  - Implement edit table page
-  - Create PUT /table/:tableid/edit endpoint
+  - Implement add expense
+  - Create POST /expenses endpoint
 
-- Feature: View item page
+- Feature: Edit expense page
+
+  - Implement edit and delete expense
+  - Create PUT /expenses endpoint
+
+- Feature: Add new expense entry
 
   - Implement view item page
-  - Create GET /expense/:id
+  - Create POST and DELETE /expenses/:id/entry
 
-- Feature: Edit item page
+- Feature: View and edit expenses entry
 
-  - Implement view item page
-  - Create GET /expense/:id/edit
+  - Implement view and edit expenses entry
+  - Create PUT and DELETE /expenses/:id/edit
 
 - Bug fixes
 
@@ -173,6 +175,8 @@ Notes and Comments:
 ## Nice-to-haves
 
 - Option to login with Google and Apple
+
+- User will be able to edit and delete account
 
 Estimate Savings Calculation:
 
