@@ -14,7 +14,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const response = await axios.get('http://localhost:8000/user', { username, password });
+      const response = await axios.post('http://localhost:8000/user/login', { username, password });
       
       //does this needs to be a .post and send the information to be checked on the backend??
      
@@ -41,7 +41,8 @@ function Login() {
             <Button style='primary' type='submit' label='Login' customClass='login__button'/>
           </div>
           <p className='login__txt'>Don't have an account? <Link to={'/signup'}>Signup</Link></p>
-        </div>        
+        </div>    
+        <p className='login__txt'>Forgot Password?</p>    
       </form>
     </main>
   );

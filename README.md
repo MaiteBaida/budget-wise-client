@@ -4,7 +4,7 @@ BudgetWise
 
 ## Overview
 
-Expense Tracker Plus is designed to help users efficiently manage their finances by categorizing and tracking expenses.
+Expense Tracker, is designed to help users efficiently manage their finances by categorizing and tracking expenses.
 
 ### Problem
 
