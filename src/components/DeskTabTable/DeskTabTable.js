@@ -2,6 +2,7 @@ import "./DeskTabTable.scss";
 import { Link, useNavigate } from "react-router-dom";
 import edit from "../../assets/icons/edit.svg";
 import Button from "../Button/Button";
+import add from "../../assets/icons/add.svg";
 
 function DeskTabTable({ list, title, expenseid, total }) {
   const nav = useNavigate();
@@ -9,6 +10,11 @@ function DeskTabTable({ list, title, expenseid, total }) {
   const handleSubmit = async (event) => {
     nav(`/expenses/${expenseid}/newentry`);
   };
+
+  const handleAddItem = async (event) => {
+    nav("/expenses/add");
+  };
+
   return (
     <section className="table">
       <div className="table__title-container">
@@ -28,19 +34,26 @@ function DeskTabTable({ list, title, expenseid, total }) {
             <div className="table__cell">${value} CAD</div>
             <div className="table__cell table__cell--buttons">
               <div className="expenses__button-container">
-                <Button
-                  style="primary"
-                  type="button"
-                  label="Add entry"
-                  onSubmit={handleSubmit}
-                />
+                <button onClick={handleSubmit}>
+                  <img src={add} />
+                </button>
               </div>
-              <Link to={`/expense/${id}/edit`}>
+              <Link to={`/expenses/${id}/edit`}>
                 <img className="table__edit-icon" src={edit} />
               </Link>
             </div>
           </div>
         ))}
+      </div>
+      <div className="table__add-item-container">
+        <div className="table__add-item">
+          <Button
+            style="primary"
+            type="button"
+            label="Add expense"
+            onClick={handleAddItem}
+          />
+        </div>
       </div>
     </section>
   );

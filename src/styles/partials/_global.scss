@@ -17,3 +17,10 @@ body {
             @include txt-body;
         }
 }
+
+button {
+    border:none;
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+}

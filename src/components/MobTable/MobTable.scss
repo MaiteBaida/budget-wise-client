@@ -21,6 +21,7 @@
     }
     &__header {
         padding: 0.5rem;
+        width: 35%;;
     }
     &__info {
         display: flex;
@@ -41,5 +42,8 @@
     &__add-icon {
         width: 2rem;
         color: $lightgray;
+    }
+    &__add-item {
+        width: 100%;
     }
 }

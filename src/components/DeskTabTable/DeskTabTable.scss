@@ -30,7 +30,7 @@
     &__row {
         border-bottom: 1px solid $lightgray;
         display: grid;
-        grid-template-columns: 2fr repeat(2, 1fr) 12rem;
+        grid-template-columns: 2fr repeat(2, 1fr) 6rem;
         &:hover{
             background-color: $lightpurple;
         }
@@ -47,10 +47,20 @@
         &--buttons {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
     }
     &__edit-icon {
         width: 2rem;
         grid-area: edit;
+    }
+    &__add-item {
+        width: 8rem;
+        padding-top: 0.75rem;
+        &-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
     }
 }
