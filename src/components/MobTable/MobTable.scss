@@ -7,19 +7,39 @@
     border: 1px solid $lightgray;
     padding: 2.25rem 1rem;
     background-color: $white;
-    @include tablet {
-        padding: 2.25rem;
-        margin: 2.25rem;
+    &__container {
+        border-top: 1px solid $lightgray; 
+        padding-bottom: 1rem; 
     }
-    @include desktop {
-        @include max-width;
-        margin-top: 2.25rem;
+    &__title {
+        @include txt-mob-sect-header;
+        margin-top: 0;
+    }
+    &__amount {
+        @include txt-mob-subheader;
+        color: $silver;
     }
     &__header {
         padding: 0.5rem;
     }
+    &__info {
+        display: flex;
+        gap: 1rem;
+        align-items: baseline;
+    }
+    &__buttons{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    &__button-container {
+        width: 7rem;
+    }
     &__edit-icon {
         width: 2rem;
-        grid-area: edit;
+    }
+    &__add-icon {
+        width: 2rem;
+        color: $lightgray;
     }
 }

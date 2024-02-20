@@ -2,27 +2,27 @@
 @import '../../styles/partials/variables';
 
 .table {
-    margin: 1rem;
     border-radius: 35px;
     border: 1px solid $lightgray;
-    padding: 2.25rem 1rem;
     background-color: $white;
-    @include tablet {
-        padding: 2.25rem;
-        margin: 2.25rem;
-    }
+    padding: 2.25rem;
+    margin: 2.25rem;
     @include desktop {
         @include max-width;
         margin-top: 2.25rem;
     }
     &__title {
         @include txt-section-header;
-        border-bottom: 1px solid $lightgray;
         margin-top: 0;
-        padding-bottom: 1rem;
-        @include tablet {
-            @include txt-section-header;
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
         }
+    }
+    &__amount {
+        @include txt-subheader;
+        color: $silver;
     }
     &__header {
         padding: 0.5rem;
@@ -30,14 +30,24 @@
     &__row {
         border-bottom: 1px solid $lightgray;
         display: grid;
-        grid-template-columns: repeat(3, 1fr) 50px;
+        grid-template-columns: 2fr repeat(2, 1fr) 12rem;
+        &:hover{
+            background-color: $lightpurple;
+        }
+        &--header {
+            background-color: $lightgray;
+            &:hover {
+                background-color: $white;
+            }
+        }
     }
     &__cell {
         padding: 0.5rem;
-    }
-    &__link {
-        display: flex;
-        justify-content: flex-end;
+        align-self: center;
+        &--buttons {
+            display: flex;
+            justify-content: space-between;
+        }
     }
     &__edit-icon {
         width: 2rem;
