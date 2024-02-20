@@ -13,6 +13,7 @@
     }
     @include desktop {
         @include max-width;
+        margin-top: 2.25rem;
     }
     &__title {
         @include txt-section-header;

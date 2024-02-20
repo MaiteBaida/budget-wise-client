@@ -12,9 +12,9 @@ import AddExpenseItem from "./pages/AddExpenseItem/AddExpenseItem.js";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/fixedexpenses/edit" element={<EditTable />} />

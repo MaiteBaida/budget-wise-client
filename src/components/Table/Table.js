@@ -2,10 +2,10 @@ import "./Table.scss";
 import { Link } from "react-router-dom";
 import edit from "../../assets/icons/edit.svg";
 
-function Table({ list }) {
+function Table({ list, title }) {
   return (
     <section className="table">
-      <h2 className="table__title">Fixed Expenses</h2>
+      <h2 className="table__title">{title} Expenses</h2>
       <div className="table__container">
         <div className="table__row">
           <div className="table__header table__header--expense">EXPENSE</div>
