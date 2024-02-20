@@ -1,9 +1,9 @@
-import Table from "../Table/Table";
+import DeskTabTable from "../DeskTabTable/DeskTabTable";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "./FixedExpenses.scss";
+import "./ExpensesTables.scss";
 
-function FixedExpenses() {
+function ExpensesTables() {
   const [expensesList, setExpensesList] = useState([]);
   const [isTableVisible, setIsTableVisible] = useState(false);
 
@@ -53,13 +53,13 @@ function FixedExpenses() {
     <main>
       {isTableVisible && (
         <>
-          <Table list={fixedExpenses} title="Fixed" />
-          <Table list={essentialExpenses} title="Essential" />
-          <Table list={nonEssentialExpenses} title="Non-Essential" />
+          <DeskTabTable list={fixedExpenses} title="Fixed" />
+          <DeskTabTable list={essentialExpenses} title="Essential" />
+          <DeskTabTable list={nonEssentialExpenses} title="Non-Essential" />
         </>
       )}
     </main>
   );
 }
 
-export default FixedExpenses;
+export default ExpensesTables;

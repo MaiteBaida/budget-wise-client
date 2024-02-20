@@ -1,8 +1,8 @@
-import "./Table.scss";
+import "./DeskTabTable.scss";
 import { Link } from "react-router-dom";
 import edit from "../../assets/icons/edit.svg";
 
-function Table({ list, title }) {
+function DeskTabTable({ list, title }) {
   return (
     <section className="table">
       <h2 className="table__title">{title} Expenses</h2>
@@ -29,4 +29,4 @@ function Table({ list, title }) {
   );
 }
 
-export default Table;
+export default DeskTabTable;
