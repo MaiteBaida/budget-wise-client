@@ -8,17 +8,17 @@ function DeskTabTable({ list, title }) {
       <h2 className="table__title">{title} Expenses</h2>
       <div className="table__container">
         <div className="table__row">
-          <div className="table__header table__header--expense">EXPENSE</div>
-          <div className="table__header table__header--budget">BUDGET</div>
-          <div className="table__header table__header--spent">SPENT</div>
+          <div className="table__header">EXPENSE</div>
+          <div className="table__header">BUDGET</div>
+          <div className="table__header">SPENT</div>
         </div>
         {list.map(({ name, budget, value, id }) => (
           <div className="table__row">
-            <div className="table__cell table__cell--expense">{name}</div>
-            <div className="table__cell table__cell--budget">${budget} CAD</div>
-            <div className="table__cell table__cell--spent">${value} CAD</div>
+            <div className="table__cell">{name}</div>
+            <div className="table__cell">${budget} CAD</div>
+            <div className="table__cell">${value} CAD</div>
             <div className="table__cell">
-              <Link to="/expense/${id}/edit" className="table__link">
+              <Link to={`/expense/${id}/edit`} className="table__link">
                 <img className="table__edit-icon" src={edit} />
               </Link>
             </div>

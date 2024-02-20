@@ -1,7 +1,8 @@
-import DeskTabTable from "../DeskTabTable/DeskTabTable";
+import "./ExpensesTables.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "./ExpensesTables.scss";
+import DeskTabTable from "../DeskTabTable/DeskTabTable";
+import MobTable from "../MobTable/MobTable";
 
 function ExpensesTables() {
   const [expensesList, setExpensesList] = useState([]);
@@ -14,7 +15,6 @@ function ExpensesTables() {
         headers: { Authorization: authToken },
       });
       setExpensesList(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching expenses data:", error);
     }
@@ -51,11 +51,17 @@ function ExpensesTables() {
 
   return (
     <main>
-      {isTableVisible && (
+      {isTableVisible ? (
         <>
           <DeskTabTable list={fixedExpenses} title="Fixed" />
           <DeskTabTable list={essentialExpenses} title="Essential" />
           <DeskTabTable list={nonEssentialExpenses} title="Non-Essential" />
+        </>
+      ) : (
+        <>
+          <MobTable list={fixedExpenses} title="Fixed" />
+          <MobTable list={essentialExpenses} title="Non-Essential" />
+          <MobTable list={nonEssentialExpenses} title="Non-Essential" />
         </>
       )}
     </main>
