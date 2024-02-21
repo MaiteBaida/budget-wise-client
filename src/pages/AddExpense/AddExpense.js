@@ -2,6 +2,7 @@ import "./AddExpense.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
+import arrowleft from "../../assets/icons/arrow-left.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -93,7 +94,12 @@ function AddExpense() {
 
   return (
     <main className="expenses-add">
-      <h2 className="expenses-add__title">Add New Expense</h2>
+      <div className="expenses-add__header">
+        <button type="button" onClick={() => nav("/home")}>
+          <img className="expenses-add__arrowleft" src={arrowleft} />
+        </button>
+        <h2 className="expenses-add__title">Add New Expense</h2>
+      </div>
       <form onSubmit={handleSubmit} className="expenses-add__form">
         <div className="expenses-add__info-container">
           <div className="expenses-add__info">

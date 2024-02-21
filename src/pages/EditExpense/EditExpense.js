@@ -3,6 +3,7 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import arrowleft from "../../assets/icons/arrow-left.svg";
 import trashcan from "../../assets/icons/trash-can.svg";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -131,7 +132,12 @@ function EditExpense() {
 
   return (
     <main className="expenses-edit">
-      <h2 className="expenses-edit__title">Edit New Expense</h2>
+      <div className="expenses-edit__header">
+        <button type="button" onClick={() => nav("/home")}>
+          <img className="expenses-edit__arrowleft" src={arrowleft} />
+        </button>
+        <h2 className="expenses-edit__title">Edit New Expense</h2>
+      </div>
       <form onSubmit={saveExpense} className="expenses-edit__form">
         <div className="expenses-edit__info-container">
           <div className="expenses-edit__info">

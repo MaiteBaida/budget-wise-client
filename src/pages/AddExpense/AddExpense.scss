@@ -14,10 +14,14 @@
         @include max-width;
         margin-top: 2.25rem;
     }
+    &__header {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        border-bottom: 1px solid $lightgray; 
+    }
     &__title {
         @include txt-mob-sect-header;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid $lightgray; 
         @include tablet {
             @include txt-section-header;
         }
@@ -80,5 +84,8 @@
                 flex-direction: column;
             }
         }
+    }
+    &__arrowleft {
+        width: 1.5rem;
     }
 }
