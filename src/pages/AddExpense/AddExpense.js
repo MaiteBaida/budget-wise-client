@@ -87,6 +87,10 @@ function AddExpense() {
     }
   };
 
+  const onCancel = () => {
+    nav("/home");
+  };
+
   return (
     <main className="expenses-add">
       <h2 className="expenses-add__title">Add New Expense</h2>
@@ -136,6 +140,7 @@ function AddExpense() {
         <div className="expenses-add__button-container">
           <div className="expenses-add__buttons">
             <Button
+              onClick={onCancel}
               customClass="expenses-add__button"
               type="button"
               style="secondary"

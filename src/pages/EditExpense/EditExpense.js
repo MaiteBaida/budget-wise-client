@@ -2,7 +2,7 @@ import "./EditExpense.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -27,11 +27,12 @@ function EditExpense() {
   const [budget, setBudget] = useState(null);
   const [type, setType] = useState(null);
   const [frequency, setFrequency] = useState(null);
+  const [expense, setExpense] = useState({});
   const [expensesList, setExpensesList] = useState([]);
 
   const fetchExpense = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/expenses`);
+      const response = await axios.get(`http://localhost:8080/expenses/${id}`);
       setExpensesList(response.data);
     } catch (error) {
       console.error("Error fetching expenses:", error);
@@ -54,55 +55,52 @@ function EditExpense() {
     setFrequency(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const saveExpense = async (event) => {
     event.preventDefault();
+    if (!name || !budget || !type) {
+      return;
+    }
+    try {
+      const authToken = localStorage.getItem("authToken");
 
-    const payload = {
-      name,
-      budget,
-      type,
-      frequency,
-    };
+      const config = {
+        headers: {
+          Authorization: authToken,
+        },
+      };
 
-    const isFormValid = () => {
-      return name && budget && type;
-    };
+      const expenseData = {
+        name: name,
+        budget: budget,
+        type: type,
+        frequency: frequency,
+      };
 
-    if (isFormValid()) {
-      try {
-        const authToken = localStorage.getItem("authToken");
-
-        const config = {
-          headers: {
-            Authorization: authToken,
-          },
-        };
-
-        const response = await axios.put(
-          `http://localhost:8000/expenses/${id}`,
-          payload,
-          config
-        );
-
-        setName("");
-        setBudget("");
-        setType("");
-        setFrequency("");
-
-        console.log("success:", response.data);
-        alert("Your expense has been edited");
-        nav("/home");
-      } catch (error) {
-        console.error("Failed to edit expense:", error);
-        alert("Failed to edit expense");
-      }
+      await axios.put(
+        `http://localhost:8000/expenses/${id}`,
+        expenseData,
+        config
+      );
+      alert("Your expense has been edited");
+      nav("/home");
+    } catch (error) {
+      console.error("Failed to edit expense:", error);
+      alert("Failed to edit expense");
     }
   };
+
+  const onCancel = () => {
+    nav("/home");
+  };
+
+  useEffect(() => {
+    fetchExpense();
+  }, [id]);
 
   return (
     <main className="expenses-edit">
       <h2 className="expenses-edit__title">Edit New Expense</h2>
-      <form onSubmit={handleSubmit} className="expenses-edit__form">
+      <form onSubmit={saveExpense} className="expenses-edit__form">
         <div className="expenses-edit__info-container">
           <div className="expenses-edit__info">
             <label className="expenses-edit__label">EXPENSE NAME</label>
@@ -148,6 +146,7 @@ function EditExpense() {
         <div className="expenses-edit__button-container">
           <div className="expenses-edit__buttons">
             <Button
+              onClick={onCancel}
               customClass="expenses-edit__button"
               type="button"
               style="secondary"
