@@ -43,6 +43,7 @@ function Login() {
         <Input
           customClass="login__input"
           name="user_name"
+          id="user_name"
           placeholder="Your Username"
           onChange={handleUsername}
         />
@@ -50,6 +51,7 @@ function Login() {
         <Input
           customClass="login__input"
           name="user_password"
+          id="user_password"
           placeholder="Your Password"
           type="password"
           onChange={handlePassword}
