@@ -1,0 +1,73 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.delete {
+    background-color: $white;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    @include tablet {
+        border-radius: 35px;
+        width: 80%;
+        height: 20rem;
+        padding: 2.25rem;
+    }
+    @include desktop {
+        max-width: 50rem;
+    }
+    &__title {
+        @include txt-mob-header;
+        @include tablet {
+            @include txt-header;
+        }
+    }
+    &__txt {
+        padding-top: 1rem;
+        @include txt-mob-body;
+        @include tablet {
+            @include txt-body;
+            padding-bottom: 1rem;
+        }
+    }
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+        position: fixed;
+        bottom: 1rem;
+        width: 100%;
+        padding-right: 2rem;
+        @include tablet {
+            width: 100%;
+            position: relative;
+            justify-content: flex-end;
+            bottom: 0;
+            margin-top: 2rem;
+        }
+    }
+    &__button {
+        width: 100%;
+        @include tablet {
+            width: 10rem;
+        }
+    }
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__close {
+        @include tablet {
+            display: flex;
+            justify-content: flex-end;
+        }
+        &-icon {
+            width: 1rem;
+        }
+    }
+}

@@ -2,6 +2,8 @@ import "./EditExpense.scss";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import trashcan from "../../assets/icons/trash-can.svg";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -29,6 +31,7 @@ function EditExpense() {
   const [frequency, setFrequency] = useState(null);
   const [expense, setExpense] = useState({});
   const [expensesList, setExpensesList] = useState([]);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const fetchExpense = async () => {
     try {
@@ -76,6 +79,8 @@ function EditExpense() {
         frequency: frequency,
       };
 
+      setExpense(expenseData);
+
       await axios.put(
         `http://localhost:8000/expenses/${id}`,
         expenseData,
@@ -96,6 +101,33 @@ function EditExpense() {
   useEffect(() => {
     fetchExpense();
   }, [id]);
+
+  const deleteExpense = async (e) => {
+    try {
+      const authToken = localStorage.getItem("authToken");
+
+      const config = {
+        headers: {
+          Authorization: authToken,
+        },
+      };
+
+      await axios.delete(`http://localhost:8000/expenses/${id}`, config);
+      closeModal();
+      alert("Your expense has been deleted");
+      nav("/home");
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+
+  const openModal = (item) => {
+    setItemToDelete(item);
+  };
+
+  const closeModal = () => {
+    setItemToDelete(null);
+  };
 
   return (
     <main className="expenses-edit">
@@ -154,8 +186,22 @@ function EditExpense() {
             />
             <Button type="submit" style="primary" label="Save" />
           </div>
+          <button
+            onClick={() => {
+              openModal(expense);
+            }}
+          >
+            <img className="expenses-edit__delete" src={trashcan} />
+          </button>
         </div>
       </form>
+      {itemToDelete && (
+        <DeleteModal
+          onClose={closeModal}
+          item={itemToDelete}
+          deleteItem={deleteExpense}
+        />
+      )}
     </main>
   );
 }
