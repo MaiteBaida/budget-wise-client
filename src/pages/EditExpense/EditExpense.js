@@ -136,7 +136,7 @@ function EditExpense() {
         <button type="button" onClick={() => nav("/home")}>
           <img className="expenses-edit__arrowleft" src={arrowleft} />
         </button>
-        <h2 className="expenses-edit__title">Edit New Expense</h2>
+        <h2 className="expenses-edit__title">Edit Expense</h2>
       </div>
       <form onSubmit={saveExpense} className="expenses-edit__form">
         <div className="expenses-edit__info-container">

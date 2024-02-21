@@ -28,21 +28,23 @@ function DeskTabTable({ list, title, expenseid, total }) {
           <div className="table__header">TOTAL ENTRIES</div>
         </div>
         {list.map(({ name, budget, value, id }) => (
-          <div className="table__row">
-            <div className="table__cell">{name}</div>
-            <div className="table__cell">${budget} CAD</div>
-            <div className="table__cell">${value} CAD</div>
-            <div className="table__cell table__cell--buttons">
-              <div className="expenses__button-container">
-                <button onClick={handleSubmit}>
-                  <img src={add} />
-                </button>
+          <Link className="table__link" to={`/expenses/${id}`}>
+            <div className="table__row">
+              <div className="table__cell">{name}</div>
+              <div className="table__cell">${budget} CAD</div>
+              <div className="table__cell">${value} CAD</div>
+              <div className="table__cell table__cell--buttons">
+                <div className="expenses__button-container">
+                  <button onClick={handleSubmit}>
+                    <img src={add} />
+                  </button>
+                </div>
+                <Link to={`/expenses/${id}/edit`}>
+                  <img className="table__edit-icon" src={edit} />
+                </Link>
               </div>
-              <Link to={`/expenses/${id}/edit`}>
-                <img className="table__edit-icon" src={edit} />
-              </Link>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="table__add-item-container">
