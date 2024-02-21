@@ -30,7 +30,7 @@ function MobTable({ list, title, expenseid, total }) {
             <p className="expenses__text">$ {budget} CAD</p>
           </div>
           <div className="expenses__info">
-            <p className="expenses__header">SPENT</p>
+            <p className="expenses__header">TOTAL ENTRIES</p>
             <p className="expenses__text">{value}</p>
           </div>
           <div className="expenses__buttons">

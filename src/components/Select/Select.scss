@@ -12,7 +12,14 @@
         @include txt-body;
         height: 2.375rem;
     }
-    &::placeholder {
+    &__option {
         color: $silver;
-    } 
+        &::placeholder {
+            color: $silver;
+        }
+    }
 }
+
+// option:first {
+//     color: $silver;
+// } 

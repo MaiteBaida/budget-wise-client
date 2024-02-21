@@ -60,7 +60,7 @@ function ExpensesTables() {
       ) : (
         <>
           <MobTable list={fixedExpenses} title="Fixed" />
-          <MobTable list={essentialExpenses} title="Non-Essential" />
+          <MobTable list={essentialExpenses} title="Essential" />
           <MobTable list={nonEssentialExpenses} title="Non-Essential" />
         </>
       )}

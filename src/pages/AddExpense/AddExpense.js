@@ -6,20 +6,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const typeOptions = [
+  { value: "Fixed", label: "Fixed Expense" },
+  { value: "Essential", label: "Essential Expense" },
+  { value: "Non-Essential", label: "Non-Essential Expense" },
+];
+
+const frequencyOptions = [
+  { value: "Monthly", label: "Monthly" },
+  { value: "Weekly", label: "Weekly" },
+  { value: "Yearly", label: "Yearly" },
+];
+
 function AddExpense() {
   const nav = useNavigate();
-
-  const typeOptions = [
-    { value: "Fixed Expense", label: "Fixed Expense" },
-    { value: "Essential Expense", label: "Essential Expense" },
-    { value: "Non-Essential Expense", label: "Non-Essential Expense" },
-  ];
-
-  const frequencyOptions = [
-    { value: "Monthly", label: "Monthly" },
-    { value: "Weekly", label: "Weekly" },
-    { value: "Yearly", label: "Yearly" },
-  ];
 
   const [name, setName] = useState(null);
   const [budget, setBudget] = useState(null);
@@ -58,9 +58,18 @@ function AddExpense() {
 
     if (isFormValid()) {
       try {
+        const authToken = localStorage.getItem("authToken");
+
+        const config = {
+          headers: {
+            Authorization: authToken,
+          },
+        };
+
         const response = await axios.post(
           `http://localhost:8000/expenses`,
-          payload
+          payload,
+          config
         );
 
         setName("");
@@ -69,6 +78,7 @@ function AddExpense() {
         setFrequency("");
 
         console.log("success:", response.data);
+        alert("Your expense has been created");
         nav("/home");
       } catch (error) {
         console.error("Failed to add expense:", error);
@@ -110,11 +120,11 @@ function AddExpense() {
               required
             />
           </div>
-          {type === "Fixed Expense" && (
+          {type === "Fixed" && (
             <div className="expenses-add__info">
               <label className="expenses-add__label">FREQUENCY</label>
               <Select
-                label="Select a frequency"
+                placeholder="Select a frequency"
                 options={frequencyOptions}
                 customClass="expenses-add__input"
                 onChange={handleFrequency}

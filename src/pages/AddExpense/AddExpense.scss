@@ -61,10 +61,14 @@
             display: flex;
             gap: 1rem;
             width: 20rem;
+            align-items: center;
         }
     }
     &__button {
         margin-bottom: 1rem;
+        @include tablet {
+            margin: 0;
+        }
         &-container {
             padding-top: 1rem;
             margin-top: 2.25rem;

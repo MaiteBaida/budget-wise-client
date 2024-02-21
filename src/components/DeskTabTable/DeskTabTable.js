@@ -25,7 +25,7 @@ function DeskTabTable({ list, title, expenseid, total }) {
         <div className="table__row table__row--header">
           <div className="table__header">EXPENSE</div>
           <div className="table__header">BUDGET</div>
-          <div className="table__header">SPENT</div>
+          <div className="table__header">TOTAL ENTRIES</div>
         </div>
         {list.map(({ name, budget, value, id }) => (
           <div className="table__row">
