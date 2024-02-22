@@ -8,6 +8,7 @@ import ExpenseOverview from "./pages/ExpenseOverview/ExpenseOverview.js";
 import AddExpense from "./pages/AddExpense/AddExpense.js";
 import EditExpense from "./pages/EditExpense/EditExpense.js";
 import NewEntry from "./pages/NewEntry/NewEntry.js";
+import EditEntry from "./pages/EditEntry/EditEntry.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/expenses/:id" element={<ExpenseOverview />} />
         <Route path="/expenses/:id/edit" element={<EditExpense />} />
         <Route path="/expenses/:id/newentry" element={<NewEntry />} />
+        <Route path="/expenses/:id/entries/:id/edit" element={<EditEntry />} />
       </Routes>
     </BrowserRouter>
   );

@@ -14,7 +14,7 @@ function EditEntry() {
 
   const [value, setValue] = useState(null);
   const [notes, setNotes] = useState(null);
-  // hhhhhhhhhhhhhhhhhhhhhhhhhh
+
   const fetchExpense = async () => {
     try {
       const authToken = localStorage.getItem("authToken");
