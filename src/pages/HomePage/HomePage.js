@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 function HomePage() {
   const nav = useNavigate();
   const [user, setUser] = useState(null);
+
   const { id } = useParams();
 
   const fetchUser = async () => {
