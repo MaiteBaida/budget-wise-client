@@ -45,7 +45,7 @@ function ExpenseOverview() {
 
   const fetchEntryId = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/expenses/${id}`);
+      const response = await axios.get(`http://localhost:8000/expenses/${id}`);
       setEntryId(response.data.it);
     } catch (error) {
       console.error("Error fetching expenses:", error);
@@ -72,12 +72,12 @@ function ExpenseOverview() {
       };
 
       await axios.delete(
-        `http://localhost:8000/expenses/${id}/entry/${entryId}`,
+        `http://localhost:8000/expenses/${id}/entries/${itemToDelete.id}`,
         config
       );
       closeModal();
       alert("Your entry has been deleted");
-      nav("/expenses/${id}");
+      getEntriesList();
     } catch (error) {
       console.error("Error deleting entry:", error);
     }
@@ -154,7 +154,7 @@ function ExpenseOverview() {
       {itemToDelete && (
         <DeleteModal
           onClose={closeModal}
-          item={itemToDelete}
+          item={`$${itemToDelete.value} CAD`}
           deleteItem={deleteEntry}
         />
       )}
