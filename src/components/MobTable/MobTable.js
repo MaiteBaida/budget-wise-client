@@ -1,15 +1,16 @@
-import React from "react";
 import "./MobTable.scss";
 import edit from "../../assets/icons/edit.svg";
-import Button from "../Button/Button";
-import { Link, useNavigate } from "react-router-dom";
 import add from "../../assets/icons/add.svg";
+import Button from "../Button/Button";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function MobTable({ list, title, expenseid, entriesValues, type }) {
+function MobTable({ list, title, id, entriesValues, type }) {
   const nav = useNavigate();
 
   const handleSubmit = async () => {
-    nav(`/expenses/${expenseid}/newentry`);
+    nav(`/expenses/${id}/newentry`);
   };
 
   const handleAddItem = async () => {
@@ -24,15 +25,15 @@ function MobTable({ list, title, expenseid, entriesValues, type }) {
         <div className="expenses__container" key={id}>
           <div className="expenses__info">
             <p className="expenses__header">EXPENSE</p>
-            <p className="expenses__text">
-              <a href={`/expenses/${id}`}>{name}</a>
-            </p>
+            <Link to={`/expenses/${id}`}>
+              <p className="expenses__text">{name}</p>
+            </Link>
           </div>
           <div className="expenses__info">
             <p className="expenses__header">BUDGET</p>
-            <p className="expenses__text">
-              <a href={`/expenses/${id}`}>${budget} CAD</a>
-            </p>
+            <Link to={`/expenses/${id}`}>
+              <p className="expenses__text">${budget} CAD</p>
+            </Link>
           </div>
           <div className="expenses__info">
             <p className="expenses__header">TOTAL ENTRIES</p>

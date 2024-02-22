@@ -3,11 +3,12 @@ import ExpensesTables from "../../components/ExpensesTables/ExpensesTables";
 import UserOverview from "../../components/UserOverview/UserOverview";
 import "./HomePage.scss";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function HomePage() {
-  const [user, setUser] = useState(null);
   const nav = useNavigate();
+  const [user, setUser] = useState(null);
+  const { id } = useParams();
 
   const fetchUser = async () => {
     try {
@@ -23,6 +24,34 @@ function HomePage() {
       nav("/login");
     }
   };
+
+  const [expenseId, setExpenseId] = useState("");
+
+  const fetchExpenseById = async () => {
+    try {
+      const authToken = localStorage.getItem("authToken");
+
+      const config = {
+        headers: {
+          Authorization: authToken,
+        },
+      };
+      const response = await axios.get(
+        `http://localhost:8000/expenses/${id}`,
+        config
+      );
+      console.log(id);
+      console.log(response);
+
+      setExpenseId(response.data.id);
+    } catch (error) {
+      console.error("Error fetching expenses:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchExpenseById();
+  }, [id]);
 
   useEffect(() => {
     fetchUser();

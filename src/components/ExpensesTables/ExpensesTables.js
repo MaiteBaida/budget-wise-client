@@ -38,7 +38,6 @@ function ExpensesTables() {
         (accumulator, currentValue) => accumulator + currentValue,
         0
       );
-      console.log(response.data);
       setEntriesValues(totalValue);
     } catch (error) {
       console.error("Error fetching entries data:", error);
