@@ -22,7 +22,10 @@ function App() {
         <Route path="/expenses/:id" element={<ExpenseOverview />} />
         <Route path="/expenses/:id/edit" element={<EditExpense />} />
         <Route path="/expenses/:id/newentry" element={<NewEntry />} />
-        <Route path="/expenses/:id/entries/:id/edit" element={<EditEntry />} />
+        <Route
+          path="/expenses/:id/entries/:entryid/edit"
+          element={<EditEntry />}
+        />
       </Routes>
     </BrowserRouter>
   );

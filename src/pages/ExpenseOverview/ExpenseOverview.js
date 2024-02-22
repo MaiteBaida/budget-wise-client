@@ -132,7 +132,9 @@ function ExpenseOverview() {
               )}
             </div>
             <div className="expense__icon-container">
-              <button onClick={() => nav("/espenses/:id/entries/:id/edit")}>
+              <button
+                onClick={() => nav(`/expenses/:id/entries/:entryid/edit`)}
+              >
                 <img className="expense__icon" src={edit} alt="edit icon" />
               </button>
               <button
