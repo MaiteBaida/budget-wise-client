@@ -2,34 +2,162 @@ import "./ExpenseOverview.scss";
 import arrowleft from "../../assets/icons/arrow-left.svg";
 import edit from "../../assets/icons/edit.svg";
 import trashcan from "../../assets/icons/trash-can.svg";
-import { useNavigate } from "react-router-dom";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function ExpenseOverview() {
   const nav = useNavigate();
+  const { id } = useParams();
+
+  const [expenseName, setExpenseName] = useState("");
+  const [entriesList, setEntriesList] = useState([]);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const [entryId, setEntryId] = useState("");
+
+  const getExpenseDetails = async () => {
+    try {
+      const authToken = localStorage.getItem("authToken");
+      const response = await axios.get(`http://localhost:8000/expenses/${id}`, {
+        headers: { Authorization: authToken },
+      });
+      setExpenseName(response.data.name);
+    } catch (error) {
+      console.error("Error fetching expense details:", error);
+    }
+  };
+
+  const getEntriesList = async () => {
+    try {
+      const authToken = localStorage.getItem("authToken");
+      const response = await axios.get(
+        `http://localhost:8000/expenses/${id}/entries`,
+        {
+          headers: { Authorization: authToken },
+        }
+      );
+      setEntriesList(response.data);
+    } catch (error) {
+      console.error("Error fetching entries data:", error);
+    }
+  };
+
+  const fetchEntryId = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/expenses/${id}`);
+      setEntryId(response.data.it);
+    } catch (error) {
+      console.error("Error fetching expenses:", error);
+    }
+  };
+
+  useEffect(() => {
+    getExpenseDetails();
+    getEntriesList();
+  }, []);
+
+  useEffect(() => {
+    fetchEntryId();
+  }, [entryId]);
+
+  const deleteEntry = async (e) => {
+    try {
+      const authToken = localStorage.getItem("authToken");
+
+      const config = {
+        headers: {
+          Authorization: authToken,
+        },
+      };
+
+      await axios.delete(
+        `http://localhost:8000/expenses/${id}/entry/${entryId}`,
+        config
+      );
+      closeModal();
+      alert("Your entry has been deleted");
+      nav("/expenses/${id}");
+    } catch (error) {
+      console.error("Error deleting entry:", error);
+    }
+  };
+
+  const openModal = (item) => {
+    setItemToDelete(item);
+  };
+
+  const closeModal = () => {
+    setItemToDelete(null);
+  };
+
+  const totalValue = entriesList
+    .reduce((total, entry) => total + parseFloat(entry.value), 0)
+    .toFixed(2);
+
+  function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  }
 
   return (
     <main className="expense">
-      <div>
-        <button type="button" onClick={() => nav("/home")}>
-          <img src={arrowleft} />
-        </button>
-        <h1>Expense (change) Overview</h1>
-        <span>$ CAD</span>
+      <div className="expense__header">
+        <div className="expense__header-container">
+          <button type="button" onClick={() => nav("/home")}>
+            <img className="expense__icon" src={arrowleft} alt="return icon" />
+          </button>
+          <h1 className="expense__title">{expenseName}</h1>
+        </div>
+        <span className="expense__subtitle">$ {totalValue} CAD</span>
       </div>
-      <ul>
-        {/* {entries.map(()=>)} */}
-        <li>
-          <p>timstamp</p>
-          <p>$ CAD</p>
-          <p>notes</p>
-          <button>
-            <img src={edit} />
-          </button>
-          <button>
-            <img src={trashcan} />
-          </button>
-        </li>
+      <ul className="expense__list">
+        {entriesList.map((entry) => (
+          <li className="expense__entry">
+            <div className="expense__info">
+              <div className="expense__container">
+                <p className="expense__entry-info">
+                  {formatDate(entry.timestamp)}
+                </p>
+                <p className="expense__entry-info">$ {entry.value} CAD</p>
+              </div>
+              {entry.notes.trim() !== "" && (
+                <>
+                  <p className="expense__label">Notes:</p>
+                  <p className="expense__entry-info">{entry.notes}</p>
+                </>
+              )}
+            </div>
+            <div className="expense__icon-container">
+              <button onClick={() => nav("/espenses/:id/entries/:id/edit")}>
+                <img className="expense__icon" src={edit} alt="edit icon" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  openModal(entry);
+                }}
+              >
+                <img
+                  className="expense__icon"
+                  src={trashcan}
+                  alt="delete icon"
+                />
+              </button>
+            </div>
+          </li>
+        ))}
       </ul>
+      {itemToDelete && (
+        <DeleteModal
+          onClose={closeModal}
+          item={itemToDelete}
+          deleteItem={deleteEntry}
+        />
+      )}
     </main>
   );
 }

@@ -1,12 +1,16 @@
 import "./ExpensesTables.scss";
-import axios from "axios";
-import { useState, useEffect } from "react";
 import DeskTabTable from "../DeskTabTable/DeskTabTable";
 import MobTable from "../MobTable/MobTable";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function ExpensesTables() {
+  const { id } = useParams();
+
   const [expensesList, setExpensesList] = useState([]);
   const [isTableVisible, setIsTableVisible] = useState(false);
+  const [entriesValues, setEntriesValues] = useState([]);
 
   const getExpensesList = async () => {
     try {
@@ -20,8 +24,30 @@ function ExpensesTables() {
     }
   };
 
+  const getEntriesValues = async () => {
+    try {
+      const authToken = localStorage.getItem("authToken");
+      const response = await axios.get(
+        `http://localhost:8000/expenses/${id}/entries`,
+        {
+          headers: { Authorization: authToken },
+        }
+      );
+      const values = response.data.map((entry) => entry.value);
+      const totalValue = values.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+      console.log(response.data);
+      setEntriesValues(totalValue);
+    } catch (error) {
+      console.error("Error fetching entries data:", error);
+    }
+  };
+
   useEffect(() => {
     getExpensesList();
+    getEntriesValues();
     handleScreenResize();
     window.addEventListener("resize", handleScreenResize);
     return () => {
@@ -59,9 +85,17 @@ function ExpensesTables() {
         </>
       ) : (
         <>
-          <MobTable list={fixedExpenses} title="Fixed" />
-          <MobTable list={essentialExpenses} title="Essential" />
-          <MobTable list={nonEssentialExpenses} title="Non-Essential" />
+          <MobTable list={fixedExpenses} title="Fixed" total={entriesValues} />
+          <MobTable
+            list={essentialExpenses}
+            title="Essential"
+            total={entriesValues}
+          />
+          <MobTable
+            list={nonEssentialExpenses}
+            title="Non-Essential"
+            total={entriesValues}
+          />
         </>
       )}
     </main>

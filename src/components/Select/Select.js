@@ -1,9 +1,14 @@
 import React from "react";
 import "./Select.scss";
 
-function Select({ name, placeholder, customClass, onChange, options }) {
+function Select({ name, placeholder, customClass, onChange, options, value }) {
   return (
-    <select name={name} className={`select ${customClass}`} onChange={onChange}>
+    <select
+      name={name}
+      className={`select ${customClass}`}
+      onChange={onChange}
+      value={value}
+    >
       <option value="" disabled selected className="select__option">
         {placeholder}
       </option>

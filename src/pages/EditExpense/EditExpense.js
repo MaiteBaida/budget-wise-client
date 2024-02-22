@@ -30,14 +30,26 @@ function EditExpense() {
   const [budget, setBudget] = useState(null);
   const [type, setType] = useState(null);
   const [frequency, setFrequency] = useState(null);
-  const [expense, setExpense] = useState({});
-  const [expensesList, setExpensesList] = useState([]);
-  const [itemToDelete, setItemToDelete] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const fetchExpense = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/expenses/${id}`);
-      setExpensesList(response.data);
+      const authToken = localStorage.getItem("authToken");
+
+      const config = {
+        headers: {
+          Authorization: authToken,
+        },
+      };
+      const response = await axios.get(
+        `http://localhost:8000/expenses/${id}`,
+        config
+      );
+
+      setName(response.data.name);
+      setBudget(response.data.budget);
+      setType(response.data.type);
+      setFrequency(response.data.frequency);
     } catch (error) {
       console.error("Error fetching expenses:", error);
     }
@@ -61,9 +73,11 @@ function EditExpense() {
 
   const saveExpense = async (event) => {
     event.preventDefault();
+
     if (!name || !budget || !type) {
       return;
     }
+
     try {
       const authToken = localStorage.getItem("authToken");
 
@@ -79,8 +93,6 @@ function EditExpense() {
         type: type,
         frequency: frequency,
       };
-
-      setExpense(expenseData);
 
       await axios.put(
         `http://localhost:8000/expenses/${id}`,
@@ -122,12 +134,12 @@ function EditExpense() {
     }
   };
 
-  const openModal = (item) => {
-    setItemToDelete(item);
+  const openModal = () => {
+    setModalOpen(true);
   };
 
   const closeModal = () => {
-    setItemToDelete(null);
+    setModalOpen(false);
   };
 
   return (
@@ -136,14 +148,15 @@ function EditExpense() {
         <button type="button" onClick={() => nav("/home")}>
           <img className="expenses-edit__arrowleft" src={arrowleft} />
         </button>
-        <h2 className="expenses-edit__title">Edit Expense</h2>
+        <h2 className="expenses-edit__title">Edit {name}</h2>
       </div>
       <form onSubmit={saveExpense} className="expenses-edit__form">
         <div className="expenses-edit__info-container">
           <div className="expenses-edit__info">
             <label className="expenses-edit__label">EXPENSE NAME</label>
             <Input
-              placeholder="Type an expense name"
+              placeholder="Name your expense"
+              value={name}
               customClass="expenses-edit__input"
               onChange={handleName}
               required
@@ -153,6 +166,7 @@ function EditExpense() {
             <label className="expenses-edit__label">BUDGET</label>
             <Input
               placeholder="Define a budget"
+              value={budget}
               customClass="expenses-edit__input"
               onChange={handleBudget}
               required
@@ -162,6 +176,7 @@ function EditExpense() {
             <label className="expenses-edit__label">EXPENSE TYPE</label>
             <Select
               placeholder="Select an expense type"
+              value={type}
               options={typeOptions}
               customClass="expenses-edit__input"
               onChange={handleType}
@@ -173,6 +188,7 @@ function EditExpense() {
               <label className="expenses-edit__label">FREQUENCY</label>
               <Select
                 placeholder="Select a frequency"
+                value={frequency}
                 options={frequencyOptions}
                 customClass="expenses-edit__input"
                 onChange={handleFrequency}
@@ -192,19 +208,15 @@ function EditExpense() {
             />
             <Button type="submit" style="primary" label="Save" />
           </div>
-          <button
-            onClick={() => {
-              openModal(expense);
-            }}
-          >
+          <button type="button" onClick={openModal}>
             <img className="expenses-edit__delete" src={trashcan} />
           </button>
         </div>
       </form>
-      {itemToDelete && (
+      {modalOpen && (
         <DeleteModal
           onClose={closeModal}
-          item={itemToDelete}
+          item={name}
           deleteItem={deleteExpense}
         />
       )}
