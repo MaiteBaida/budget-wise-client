@@ -9,7 +9,7 @@ import axios from "axios";
 function EditEntry() {
   const nav = useNavigate();
 
-  const { entryId, id } = useParams();
+  const { entryid, id } = useParams();
 
   const [value, setValue] = useState(null);
   const [notes, setNotes] = useState(null);
@@ -25,12 +25,14 @@ function EditEntry() {
         },
       };
       const response = await axios.get(
-        `http://localhost:8000/expenses/${id}/entries/${entryId}`,
+        `http://localhost:8000/expenses/${id}/entries/${entryid}`,
         config
       );
 
       setValue(response.data.value);
       setNotes(response.data.notes);
+      console.log(response.data.value);
+      console.log(response.data.notes);
     } catch (error) {
       console.error("Error fetching expenses:", error);
     }
@@ -51,6 +53,7 @@ function EditEntry() {
       );
 
       setExpenseName(response.data.name);
+      console.log(response.data.name);
     } catch (error) {
       console.error("Error fetching expense name:", error);
     }
@@ -86,7 +89,7 @@ function EditEntry() {
       };
 
       await axios.put(
-        `http://localhost:8000/expenses/${id}/entries/${entryId}`,
+        `http://localhost:8000/expenses/${id}/entries/${entryid}`,
         entryData,
         config
       );
@@ -105,7 +108,7 @@ function EditEntry() {
   useEffect(() => {
     fetchEntry();
     fetchExpenseName();
-  }, [id, entryId, fetchEntry, fetchExpenseName]);
+  }, [id, entryid, fetchEntry, fetchExpenseName]);
 
   return (
     <main className="entry-edit">
@@ -138,15 +141,17 @@ function EditEntry() {
             />
           </div>
         </div>
-        <div className="entry-edit__buttons">
-          <Button
-            onClick={onCancel}
-            customClass="entry-edit__button"
-            type="button"
-            style="secondary"
-            label="Cancel"
-          />
-          <Button type="submit" style="primary" label="Save" />
+        <div className="entry-edit__button-container">
+          <div className="entry-edit__buttons">
+            <Button
+              onClick={onCancel}
+              customClass="entry-edit__button"
+              type="button"
+              style="secondary"
+              label="Cancel"
+            />
+            <Button type="submit" style="primary" label="Save" />
+          </div>
         </div>
       </form>
     </main>
