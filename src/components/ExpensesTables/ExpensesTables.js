@@ -79,22 +79,37 @@ function ExpensesTables() {
     <main>
       {isTableVisible ? (
         <>
-          <DeskTabTable list={fixedExpenses} title="Fixed" />
-          <DeskTabTable list={essentialExpenses} title="Essential" />
-          <DeskTabTable list={nonEssentialExpenses} title="Non-Essential" />
+          <DeskTabTable list={fixedExpenses} title="Fixed" type="Fixed" />
+          <DeskTabTable
+            list={essentialExpenses}
+            title="Essential"
+            type="Essential"
+          />
+          <DeskTabTable
+            list={nonEssentialExpenses}
+            title="Non-Essential"
+            type="Non-Essential"
+          />
         </>
       ) : (
         <>
-          <MobTable list={fixedExpenses} title="Fixed" total={entriesValues} />
+          <MobTable
+            list={fixedExpenses}
+            title="Fixed"
+            total={entriesValues}
+            type="Fixed"
+          />
           <MobTable
             list={essentialExpenses}
             title="Essential"
             total={entriesValues}
+            type="Essential"
           />
           <MobTable
             list={nonEssentialExpenses}
             title="Non-Essential"
             total={entriesValues}
+            type="Non-Essential"
           />
         </>
       )}

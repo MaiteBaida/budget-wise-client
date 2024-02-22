@@ -4,15 +4,15 @@ import edit from "../../assets/icons/edit.svg";
 import Button from "../Button/Button";
 import add from "../../assets/icons/add.svg";
 
-function DeskTabTable({ list, title, expenseid, total }) {
+function DeskTabTable({ list, title, expenseid, total, type }) {
   const nav = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async () => {
     nav(`/expenses/${expenseid}/newentry`);
   };
 
-  const handleAddItem = async (event) => {
-    nav("/expenses/add");
+  const handleAddItem = async () => {
+    nav(`/expenses/add?type=${type}`);
   };
 
   return (

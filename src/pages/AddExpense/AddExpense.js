@@ -4,7 +4,7 @@ import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import arrowleft from "../../assets/icons/arrow-left.svg";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 const typeOptions = [
@@ -21,10 +21,11 @@ const frequencyOptions = [
 
 function AddExpense() {
   const nav = useNavigate();
+  const [params] = useSearchParams();
 
   const [name, setName] = useState(null);
   const [budget, setBudget] = useState(null);
-  const [type, setType] = useState(null);
+  const [type, setType] = useState(params.get("type"));
   const [frequency, setFrequency] = useState(null);
 
   const handleName = (event) => {
@@ -123,6 +124,7 @@ function AddExpense() {
           <div className="expenses-add__info">
             <label className="expenses-add__label">EXPENSE TYPE</label>
             <Select
+              value={type}
               placeholder="Select an expense type"
               options={typeOptions}
               customClass="expenses-add__input"

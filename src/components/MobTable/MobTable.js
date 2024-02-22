@@ -5,15 +5,15 @@ import Button from "../Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import add from "../../assets/icons/add.svg";
 
-function MobTable({ list, title, expenseid, entriesValues }) {
+function MobTable({ list, title, expenseid, entriesValues, type }) {
   const nav = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async () => {
     nav(`/expenses/${expenseid}/newentry`);
   };
 
-  const handleAddItem = async (event) => {
-    nav("/expenses/add");
+  const handleAddItem = async () => {
+    nav(`/expenses/add?type=${type}`);
   };
 
   return (
