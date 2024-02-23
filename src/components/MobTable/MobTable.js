@@ -6,11 +6,11 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function MobTable({ list, title, id, entriesValues, type }) {
+function MobTable({ list, title, expenseid, entriesValues, type }) {
   const nav = useNavigate();
 
   const handleSubmit = async () => {
-    nav(`/expenses/${id}/newentry`);
+    nav(`/expenses/${expenseid}/entries/add`);
   };
 
   const handleAddItem = async () => {

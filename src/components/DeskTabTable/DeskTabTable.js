@@ -4,14 +4,10 @@ import edit from "../../assets/icons/edit.svg";
 import Button from "../Button/Button";
 import add from "../../assets/icons/add.svg";
 
-function DeskTabTable({ list, title, expenseid, total, type }) {
+function DeskTabTable({ list, title, total, type }) {
   const nav = useNavigate();
 
-  const handleSubmit = async () => {
-    nav(`/expenses/${expenseid}/newentry`);
-  };
-
-  const handleAddItem = async () => {
+  const handleAddItem = () => {
     nav(`/expenses/add?type=${type}`);
   };
 
@@ -38,9 +34,9 @@ function DeskTabTable({ list, title, expenseid, total, type }) {
             <div className="table__cell">${value} CAD</div>
             <div className="table__cell table__cell--buttons">
               <div className="expenses__button-container">
-                <button onClick={handleSubmit}>
+                <Link to={`/expenses/${id}/entries/add`}>
                   <img src={add} />
-                </button>
+                </Link>
               </div>
               <Link to={`/expenses/${id}/edit`}>
                 <img className="table__edit-icon" src={edit} />

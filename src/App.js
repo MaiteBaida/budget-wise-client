@@ -21,7 +21,7 @@ function App() {
         <Route path="/expenses/add" element={<AddExpense />} />
         <Route path="/expenses/:id" element={<ExpenseOverview />} />
         <Route path="/expenses/:id/edit" element={<EditExpense />} />
-        <Route path="/expenses/:id/newentry" element={<NewEntry />} />
+        <Route path="/expenses/:id/entries/add" element={<NewEntry />} />
         <Route
           path="/expenses/:id/entries/:entryid/edit"
           element={<EditEntry />}

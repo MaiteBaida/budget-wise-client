@@ -3,14 +3,10 @@ import DeskTabTable from "../DeskTabTable/DeskTabTable";
 import MobTable from "../MobTable/MobTable";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 function ExpensesTables() {
-  const { id } = useParams();
-
   const [expensesList, setExpensesList] = useState([]);
   const [isTableVisible, setIsTableVisible] = useState(false);
-  const [entriesValues, setEntriesValues] = useState([]);
 
   const getExpensesList = async () => {
     try {
@@ -24,29 +20,8 @@ function ExpensesTables() {
     }
   };
 
-  const getEntriesValues = async () => {
-    try {
-      const authToken = localStorage.getItem("authToken");
-      const response = await axios.get(
-        `http://localhost:8000/expenses/${id}/entries`,
-        {
-          headers: { Authorization: authToken },
-        }
-      );
-      const values = response.data.map((entry) => entry.value);
-      const totalValue = values.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
-      setEntriesValues(totalValue);
-    } catch (error) {
-      console.error("Error fetching entries data:", error);
-    }
-  };
-
   useEffect(() => {
     getExpensesList();
-    getEntriesValues();
     handleScreenResize();
     window.addEventListener("resize", handleScreenResize);
     return () => {
@@ -74,20 +49,39 @@ function ExpensesTables() {
     (expense) => expense.type === "Non-Essential"
   );
 
+  function totalEntries(expenses) {
+    expenses.forEach((expense) => {
+      let totalValue = 0;
+
+      expense.entries.forEach((entry) => {
+        totalValue += parseFloat(entry.value);
+      });
+
+      expense.totalEntryValue = totalValue.toFixed(2);
+    });
+  }
+
   return (
     <main>
       {isTableVisible ? (
         <>
-          <DeskTabTable list={fixedExpenses} title="Fixed" type="Fixed" />
+          <DeskTabTable
+            list={fixedExpenses}
+            title="Fixed"
+            type="Fixed"
+            total={totalEntries(fixedExpenses)}
+          />
           <DeskTabTable
             list={essentialExpenses}
             title="Essential"
             type="Essential"
+            total={totalEntries(essentialExpenses)}
           />
           <DeskTabTable
             list={nonEssentialExpenses}
             title="Non-Essential"
             type="Non-Essential"
+            total={totalEntries(nonEssentialExpenses)}
           />
         </>
       ) : (
@@ -95,19 +89,19 @@ function ExpensesTables() {
           <MobTable
             list={fixedExpenses}
             title="Fixed"
-            total={entriesValues}
+            total={totalEntries(fixedExpenses)}
             type="Fixed"
           />
           <MobTable
             list={essentialExpenses}
             title="Essential"
-            total={entriesValues}
+            total={totalEntries(essentialExpenses)}
             type="Essential"
           />
           <MobTable
             list={nonEssentialExpenses}
             title="Non-Essential"
-            total={entriesValues}
+            total={totalEntries(nonEssentialExpenses)}
             type="Non-Essential"
           />
         </>
