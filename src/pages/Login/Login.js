@@ -75,13 +75,11 @@ function Login() {
               onClick={handleSubmit}
             />
           </div>
-          {/* <div className="login__txt-box"> */}
           <Link to={"/signup"}>
             <p className="login__txt login__txt--link">
               Don't have an account? Signup
             </p>
           </Link>
-          {/* </div> */}
         </div>
         <p className="login__txt login__txt--link">Forgot Password?</p>
       </form>

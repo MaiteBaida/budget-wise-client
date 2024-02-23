@@ -50,9 +50,17 @@
     }
     &__buttons {
         margin: 1rem 0;
+        display: flex;
+        gap: 1rem;
     }
     &__button {
         margin-top: 0.5rem;
+        &--cancel {
+            order: 1;
+        }
+        &--submit {
+            order: 2;
+        }
     }
     &__txt {
         text-align: center;
@@ -60,6 +68,12 @@
         @include tablet {
             order: 1;
             width: rem;
+        }
+        &--link {
+            @include txt-mob-body-bold;
+            @include tablet {
+                @include txt-body-bold;
+            }
         }
     }
 }

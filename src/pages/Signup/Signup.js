@@ -132,20 +132,22 @@ function Signup() {
             type="submit"
             style="primary"
             label="Signup"
-            customClass="signup__button"
+            customClass="signup__button signup__button--submit"
             onClick={handleSubmit}
           />
           <Button
             type="button"
             style="secondary"
             label="Cancel"
-            customClass="signup__button"
+            customClass="signup__button signup__button--cancel"
             onClick={handleCancel}
           />
         </div>
-        <p className="signup__txt">
-          Already have an account? <Link to={"/login"}>Login</Link>
-        </p>
+        <Link to={"/login"}>
+          <p className="signup__txt signup__txt--link">
+            Already have an account? Login
+          </p>
+        </Link>
       </form>
     </main>
   );
