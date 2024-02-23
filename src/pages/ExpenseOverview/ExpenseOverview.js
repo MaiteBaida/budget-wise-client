@@ -14,7 +14,6 @@ function ExpenseOverview() {
   const [expenseName, setExpenseName] = useState("");
   const [entriesList, setEntriesList] = useState([]);
   const [itemToDelete, setItemToDelete] = useState(null);
-  const [entryId, setEntryId] = useState("");
 
   const getExpenseDetails = async () => {
     try {
@@ -43,23 +42,10 @@ function ExpenseOverview() {
     }
   };
 
-  const fetchEntryId = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8000/expenses/${id}`);
-      setEntryId(response.data.it);
-    } catch (error) {
-      console.error("Error fetching expenses:", error);
-    }
-  };
-
   useEffect(() => {
     getExpenseDetails();
     getEntriesList();
   }, []);
-
-  useEffect(() => {
-    fetchEntryId();
-  }, [entryId]);
 
   const deleteEntry = async (e) => {
     try {
@@ -116,7 +102,7 @@ function ExpenseOverview() {
       </div>
       <ul className="expense__list">
         {entriesList.map((entry) => (
-          <li className="expense__entry">
+          <li className="expense__entry" key={entry.id}>
             <div className="expense__info">
               <div className="expense__container">
                 <p className="expense__entry-info">
@@ -133,7 +119,7 @@ function ExpenseOverview() {
             </div>
             <div className="expense__icon-container">
               <button
-                onClick={() => nav(`/expenses/:id/entries/:entryid/edit`)}
+                onClick={() => nav(`/expenses/${id}/entries/${entry.id}/edit`)}
               >
                 <img className="expense__icon" src={edit} alt="edit icon" />
               </button>

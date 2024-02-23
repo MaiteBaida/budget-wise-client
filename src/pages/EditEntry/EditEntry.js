@@ -24,6 +24,7 @@ function EditEntry() {
           Authorization: authToken,
         },
       };
+
       const response = await axios.get(
         `http://localhost:8000/expenses/${id}/entries/${entryid}`,
         config
@@ -31,8 +32,6 @@ function EditEntry() {
 
       setValue(response.data.value);
       setNotes(response.data.notes);
-      console.log(response.data.value);
-      console.log(response.data.notes);
     } catch (error) {
       console.error("Error fetching expenses:", error);
     }
@@ -53,7 +52,6 @@ function EditEntry() {
       );
 
       setExpenseName(response.data.name);
-      console.log(response.data.name);
     } catch (error) {
       console.error("Error fetching expense name:", error);
     }
@@ -108,7 +106,7 @@ function EditEntry() {
   useEffect(() => {
     fetchEntry();
     fetchExpenseName();
-  }, [id, entryid, fetchEntry, fetchExpenseName]);
+  }, [id, entryid]);
 
   return (
     <main className="entry-edit">
@@ -116,7 +114,7 @@ function EditEntry() {
         <button type="button" onClick={() => nav(`/expenses/${id}`)}>
           <img className="entry-edit__arrowleft" src={arrowleft} alt="return" />
         </button>
-        <h2 className="entry-edit__title">Edit {expenseName} entry</h2>
+        <h2 className="entry-edit__title">Edit {expenseName} Entry</h2>
       </div>
       <form onSubmit={editExpense}>
         <div className="entry-edit__info-container">
