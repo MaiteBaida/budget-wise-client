@@ -50,6 +50,10 @@
             align-items: center;
         }
     }
+    &__add-icon {
+        width: 1.75rem;
+        grid-area: edit;
+    }
     &__edit-icon {
         width: 2rem;
         grid-area: edit;

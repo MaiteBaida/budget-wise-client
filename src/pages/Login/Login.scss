@@ -13,7 +13,7 @@
     &__title {
         color: $white;
         @include txt-mob-header;
-        margin: 1rem 1rem 2rem 1rem;
+        margin: 1rem 1rem 2rem 2rem;
         max-width: 50%;
         @include tablet {
             @include txt-header;
@@ -24,7 +24,6 @@
     &__card {
         margin: 1rem;
         border-radius: 35px;
-        border: 1px solid $lightgray;
         padding: 2.25rem 1rem;
         background-color: $white;
         @include tablet {
@@ -42,7 +41,6 @@
     }
     &__label {
         @include txt-mob-labels;
-        color: $black;
         @include tablet {
             @include txt-labels;
         }
@@ -54,7 +52,7 @@
         margin: 1.75rem 0 0.5rem 0;
         &-container {
             @include tablet {
-                width: 5rem;
+                width: 6rem;
                 order: 2;
             }
         }

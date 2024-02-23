@@ -42,7 +42,7 @@ function MobTable({ list, title, expenseid, entriesValues, type }) {
           <div className="expenses__buttons">
             <div className="expenses__button-container">
               <button onClick={handleSubmit}>
-                <img src={add} alt="Add entry" />
+                <img src={add} className="expenses__add-icon" alt="Add entry" />
               </button>
             </div>
             <Link to={`/expenses/${id}/edit`}>

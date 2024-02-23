@@ -5,9 +5,9 @@
     border-radius: 20px;
     width: 100%;
     height: 2.25rem;
-    @include txt-mob-body;
+    @include txt-mob-labels;
     @include tablet {
-        @include txt-body;
+        @include txt-labels;
         height: 2.375rem;
     }
     &__primary {
