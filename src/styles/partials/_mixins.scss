@@ -25,8 +25,8 @@
 
 @mixin txt-mob-sect-header {
     font-family: 'Satoshi-Medium', Arial, Helvetica, sans-serif;
-    font-size: 1.25rem; //18px
-    line-height: 1.25rem; //20px
+    font-size: 1.5rem; //24px
+    line-height: 1.75rem; //20px
 }
 
 @mixin txt-mob-subheader {
@@ -58,7 +58,7 @@
 
 @mixin txt-section-header {
     font-family: 'Satoshi-Medium', Arial, Helvetica, sans-serif;
-    font-size: 1.5rem; //24px
+    font-size: 1.75rem; //28px
     line-height: 2.063rem; //33px
 }
 

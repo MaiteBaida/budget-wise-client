@@ -1,6 +1,11 @@
+@import '../../styles/partials/mixins';
+
 .logo {
     &__img {
         padding: 1rem;
         width: 12rem;
+        @include tablet {
+            width: 15rem;
+        }
     }
 }

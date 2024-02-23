@@ -4,16 +4,20 @@
 .expenses {
     margin: 1rem;
     border-radius: 35px;
-    border: 1px solid $lightgray;
     padding: 2.25rem 1rem;
     background-color: $white;
     &__container {
         border-top: 1px solid $lightgray; 
-        padding-bottom: 1rem; 
+        padding-bottom: 1rem;
+    } 
+    &__wrapper {
+        display: flex;
+        justify-content:space-between;
+        align-items: baseline;
     }
     &__title {
         @include txt-mob-sect-header;
-        margin-top: 0;
+        max-width: 45%
     }
     &__amount {
         @include txt-mob-subheader;
@@ -21,7 +25,8 @@
     }
     &__header {
         padding: 0.5rem;
-        width: 35%;;
+        width: 35%;
+        @include txt-subheader;
     }
     &__info {
         display: flex;
@@ -36,17 +41,20 @@
     &__button-container {
         width: 7rem;
     }
+    &__arrow-icon {
+        width: 1.75rem;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
     &__edit-icon {
         width: 2rem;
     }
     &__add-icon {
-        width: 2rem;
+        width: 1.75rem;
         color: $lightgray;
     }
     &__add-item {
         width: 100%;
-    }
-    &__link {
-        text-decoration: none;
     }
 }

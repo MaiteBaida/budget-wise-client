@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 function Header({ user }) {
   return (
     <header className="header">
-      <p>{user.first_name}</p>
+      {/* <p>{user.first_name}</p> */}
       <Logo />
       <nav className="header__container"></nav>
     </header>

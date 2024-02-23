@@ -13,7 +13,7 @@ import EditEntry from "./pages/EditEntry/EditEntry.js";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<Login />} />

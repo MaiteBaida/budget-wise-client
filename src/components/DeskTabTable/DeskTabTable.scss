@@ -13,7 +13,6 @@
     }
     &__title {
         @include txt-section-header;
-        margin-top: 0;
         &-container {
             display: flex;
             justify-content: space-between;
@@ -26,6 +25,8 @@
     }
     &__header {
         padding: 0.5rem;
+        @include txt-subheader;
+
     }
     &__row {
         border-bottom: 1px solid $lightgray;
@@ -37,7 +38,7 @@
         &--header {
             background-color: $lightgray;
             &:hover {
-                background-color: $white;
+                background-color: $lightgray;
             }
         }
     }
@@ -52,11 +53,15 @@
     }
     &__add-icon {
         width: 1.75rem;
-        grid-area: edit;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
     &__edit-icon {
         width: 2rem;
-        grid-area: edit;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
     &__add-item {
         width: 8rem;
