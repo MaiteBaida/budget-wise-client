@@ -14,7 +14,7 @@
         color: $white;
         @include txt-mob-header;
         margin: 1rem 1rem 2rem 2rem;
-        max-width: 50%;
+        max-width: 60%;
         @include tablet {
             @include txt-header;
             max-width: 30%;
@@ -57,12 +57,27 @@
             }
         }
     }
+    &__remember {
+        display: flex;
+        align-items: center;
+    }
+    // &__radio--checked {
+    //     &:checked {
+    //       background-color: $green;
+    //       border-color: $green;
+    //     }
+    //   }
     &__txt {
         text-align: center;
         margin-bottom: 0;
         @include tablet {
             order: 1;
-            width: rem;
+        }
+        &--link {
+            @include txt-mob-body-bold;
+            @include tablet {
+                @include txt-body-bold;
+            }
         }
     }
 }

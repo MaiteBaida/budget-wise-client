@@ -56,9 +56,14 @@ function Login() {
           type="password"
           onChange={handlePassword}
         />
-        <div>
+        <div className="login__remember">
           <label className="login__label">Remember</label>
-          <input type="radio" id="remember" value="remember"></input>
+          <input
+            className="login__radio--checked"
+            type="radio"
+            id="remember"
+            value="remember"
+          ></input>
         </div>
         <div className="login__card-bottom">
           <div className="login__button-container">
@@ -70,11 +75,15 @@ function Login() {
               onClick={handleSubmit}
             />
           </div>
-          <p className="login__txt">
-            Don't have an account? <Link to={"/signup"}>Signup</Link>
-          </p>
+          {/* <div className="login__txt-box"> */}
+          <Link to={"/signup"}>
+            <p className="login__txt login__txt--link">
+              Don't have an account? Signup
+            </p>
+          </Link>
+          {/* </div> */}
         </div>
-        <p className="login__txt">Forgot Password?</p>
+        <p className="login__txt login__txt--link">Forgot Password?</p>
       </form>
     </main>
   );
