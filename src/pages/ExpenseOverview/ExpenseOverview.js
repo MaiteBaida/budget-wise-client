@@ -45,7 +45,7 @@ function ExpenseOverview() {
   useEffect(() => {
     getExpenseDetails();
     getEntriesList();
-  }, []);
+  }, [id]);
 
   const deleteEntry = async (e) => {
     try {

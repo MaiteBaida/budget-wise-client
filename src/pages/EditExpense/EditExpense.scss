@@ -97,5 +97,9 @@
     }
     &__arrowleft {
         width: 1.5rem;
+        margin-top: 0.353rem;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
 }

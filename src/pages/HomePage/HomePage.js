@@ -71,18 +71,6 @@ function HomePage() {
     (expense) => expense.type === "Non-Essential"
   );
 
-  function totalEntries(expenses) {
-    expenses.forEach((expense) => {
-      let totalValue = 0;
-
-      expense.entries.forEach((entry) => {
-        totalValue += parseFloat(entry.value);
-      });
-
-      expense.totalEntryValue = totalValue.toFixed(2);
-    });
-  }
-
   const fetchExpenseById = async () => {
     try {
       const authToken = localStorage.getItem("authToken");
@@ -92,6 +80,7 @@ function HomePage() {
           Authorization: authToken,
         },
       };
+      
       const response = await axios.get(
         `http://localhost:8000/expenses/${id}`,
         config
@@ -112,6 +101,22 @@ function HomePage() {
   useEffect(() => {
     fetchUser();
   }, []);
+
+  // const totalEntries = expensesList.data.value
+  //   .reduce((total, entry) => total + parseFloat(entry.value), 0)
+  //   .toFixed(2);
+
+  function totalEntries(expenses) {
+    expenses.forEach((expense) => {
+      let totalValue = 0;
+
+      expense.entries.forEach((entry) => {
+        totalValue += parseFloat(entry.value);
+      });
+
+      expense.totalEntryValue = totalValue.toFixed(2);
+    });
+  }
 
   if (!user) {
     return null;

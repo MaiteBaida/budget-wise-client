@@ -36,6 +36,51 @@ function NewEntry() {
     }
   };
 
+  const handleValue = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleNotes = (event) => {
+    setNotes(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const payload = {
+        value,
+        notes,
+      };
+
+      if (!value) {
+        return;
+      }
+      const authToken = localStorage.getItem("authToken");
+
+      const config = {
+        headers: {
+          Authorization: authToken,
+        },
+      };
+
+      const response = await axios.post(
+        `http://localhost:8000/expenses/${id}/entries`,
+        payload,
+        config
+      );
+
+      setValue("");
+      setNotes("");
+
+      console.log("success:", response.data);
+      alert("Your expense has been created");
+      nav("/home");
+    } catch (error) {
+      console.error("Failed to add expense:", error);
+      alert("Failed to add expense");
+    }
+  };
+
   useEffect(() => {
     fetchExpenseName();
   }, [id]);
@@ -47,18 +92,19 @@ function NewEntry() {
   return (
     <main className="new-entry">
       <div className="new-entry__header">
-        <button type="button" onClick={() => nav(`/expenses/${id}`)}>
+        <button type="button" onClick={onCancel}>
           <img className="new-entry__arrowleft" src={arrowleft} alt="return" />
         </button>
         <h2 className="new-entry__title">Add New Entry to {expenseName}</h2>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="new-entry__info-container">
           <div className="new-entry__info">
             <label className="new-entry__label">ENTRY VALUE</label>
             <Input
               placeholder="Entry Value"
               customClass="new-entry__input"
+              onChange={handleValue}
               required
             />
           </div>
@@ -67,7 +113,7 @@ function NewEntry() {
             <textarea
               placeholder="Add notes"
               className="new-entry__txtarea"
-              required
+              onChange={handleNotes}
             />
           </div>
         </div>
