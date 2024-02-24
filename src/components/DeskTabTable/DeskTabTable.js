@@ -61,7 +61,7 @@ function DeskTabTable({ list, title, total, type }) {
           </div>
         )}
         {expandedIds.includes("expand") &&
-          list.map(({ name, budget, value, id }) => (
+          list.map(({ name, budget, id, total_entries }) => (
             <div className="table__row" key={id}>
               <Link to={`/expenses/${id}`}>
                 <div className="table__cell">
@@ -73,7 +73,7 @@ function DeskTabTable({ list, title, total, type }) {
                   <p>${budget} CAD</p>
                 </div>
               </Link>
-              <div className="table__cell">${value} CAD</div>
+              <div className="table__cell">${total_entries} CAD</div>
               <div className="table__cell table__cell--buttons">
                 <div className="expenses__button-container">
                   <Link to={`/expenses/${id}/entries/add`}>

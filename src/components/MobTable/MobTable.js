@@ -7,7 +7,7 @@ import arrowup from "../../assets/icons/chevron-up.svg";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function MobTable({ list, title, expenseid, entriesValues, type }) {
+function MobTable({ list, title, total, entriesValues, type }) {
   const nav = useNavigate();
 
   const [expandedIds, setExpandedIds] = useState([]);
@@ -30,7 +30,7 @@ function MobTable({ list, title, expenseid, entriesValues, type }) {
     <section className="expenses">
       <div className="expenses__wrapper">
         <h2 className="expenses__title">{title} Expenses</h2>
-        <p className="expenses__amount">${entriesValues} CAD</p>
+        <p className="expenses__amount">${total} CAD</p>
         <button
           className="expand__icon-box"
           onClick={() => toggleExpand("expand")}
@@ -51,7 +51,7 @@ function MobTable({ list, title, expenseid, entriesValues, type }) {
         </button>
       </div>
       {expandedIds.includes("expand") &&
-        list.map(({ name, budget, value, id }) => (
+        list.map(({ name, budget, total_entries, id }) => (
           <div className="expenses__container" key={id}>
             <div className="expenses__info">
               <p className="expenses__header">EXPENSE</p>
@@ -67,7 +67,7 @@ function MobTable({ list, title, expenseid, entriesValues, type }) {
             </div>
             <div className="expenses__info">
               <p className="expenses__header">TOTAL ENTRIES</p>
-              <p className="expenses__text">{value}</p>
+              <p className="expenses__text">{total_entries}</p>
             </div>
             <div className="expenses__buttons">
               <div className="expenses__button-container">

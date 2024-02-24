@@ -3,32 +3,11 @@ import UserOverview from "../../components/UserOverview/UserOverview";
 import DeskTabTable from "../../components/DeskTabTable/DeskTabTable";
 import MobTable from "../../components/MobTable/MobTable";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function HomePage() {
-  const nav = useNavigate();
-  const [user, setUser] = useState(null);
   const [expensesList, setExpensesList] = useState([]);
   const [isTableVisible, setIsTableVisible] = useState(false);
-  const [expenseId, setExpenseId] = useState("");
-
-  const { id } = useParams();
-
-  const fetchUser = async () => {
-    try {
-      const authToken = await localStorage.getItem("authToken");
-
-      const user = await axios.get("http://localhost:8000/users", {
-        headers: { Authorization: authToken },
-      });
-
-      setUser(user.data);
-    } catch (error) {
-      alert("User not found");
-      nav("/login");
-    }
-  };
 
   const getExpensesList = async () => {
     try {
@@ -71,40 +50,15 @@ function HomePage() {
     (expense) => expense.type === "Non-Essential"
   );
 
-  // const fetchExpenseById = async () => {
-  //   try {
-  //     const authToken = localStorage.getItem("authToken");
+  const totalEntriesByExpenseType = (expenses) => {
+    let total = 0;
 
-  //     const config = {
-  //       headers: {
-  //         Authorization: authToken,
-  //       },
-  //     };
+    expenses.forEach((expense) => {
+      total = total + Number(expense.total_entries);
+    });
 
-  //     const response = await axios.get(
-  //       `http://localhost:8000/expenses/${id}`,
-  //       config
-  //     );
-  //     console.log(id);
-  //     console.log(response);
-
-  //     setExpenseId(response.data.id);
-  //   } catch (error) {
-  //     console.error("Error fetching expenses:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchExpenseById();
-  // }, [id]);
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
-  if (!user) {
-    return null;
-  }
+    return total;
+  };
 
   return (
     <>
@@ -116,19 +70,19 @@ function HomePage() {
               list={fixedExpenses}
               title="Fixed"
               type="Fixed"
-              // total={}
+              total={totalEntriesByExpenseType(fixedExpenses)}
             />
             <DeskTabTable
               list={essentialExpenses}
               title="Essential"
               type="Essential"
-              // total={totalEntries(essentialExpenses)}
+              total={totalEntriesByExpenseType(essentialExpenses)}
             />
             <DeskTabTable
               list={nonEssentialExpenses}
               title="Non-Essential"
               type="Non-Essential"
-              // total={totalEntries(nonEssentialExpenses)}
+              total={totalEntriesByExpenseType(nonEssentialExpenses)}
             />
           </>
         ) : (
@@ -136,19 +90,19 @@ function HomePage() {
             <MobTable
               list={fixedExpenses}
               title="Fixed"
-              // total={totalEntries(fixedExpenses)}
+              total={totalEntriesByExpenseType(fixedExpenses)}
               type="Fixed"
             />
             <MobTable
               list={essentialExpenses}
               title="Essential"
-              // // total={totalEntries(essentialExpenses)}
+              total={totalEntriesByExpenseType(essentialExpenses)}
               type="Essential"
             />
             <MobTable
               list={nonEssentialExpenses}
               title="Non-Essential"
-              // // total={totalEntries(nonEssentialExpenses)}
+              total={totalEntriesByExpenseType(nonEssentialExpenses)}
               type="Non-Essential"
             />
           </>
