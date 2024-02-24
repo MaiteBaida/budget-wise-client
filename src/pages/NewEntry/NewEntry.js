@@ -86,13 +86,14 @@ function NewEntry() {
   }, [id]);
 
   const onCancel = () => {
-    nav(`/expenses/${id}`);
+    // nav(`/expenses/${id}`);
+    nav(-1);
   };
 
   return (
     <main className="new-entry">
       <div className="new-entry__header">
-        <button type="button" onClick={onCancel}>
+        <button type="button" onClick={() => nav(-2)}>
           <img className="new-entry__arrowleft" src={arrowleft} alt="return" />
         </button>
         <h2 className="new-entry__title">Add New Entry to {expenseName}</h2>

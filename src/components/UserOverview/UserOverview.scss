@@ -8,6 +8,7 @@
     background-color: $white;
     @include tablet {
         padding: 2.25rem;
+        margin: 2.25rem;
     }
     @include desktop {
         @include max-width;
