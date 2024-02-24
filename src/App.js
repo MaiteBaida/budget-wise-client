@@ -9,6 +9,7 @@ import AddExpense from "./pages/AddExpense/AddExpense.js";
 import EditExpense from "./pages/EditExpense/EditExpense.js";
 import NewEntry from "./pages/NewEntry/NewEntry.js";
 import EditEntry from "./pages/EditEntry/EditEntry.js";
+import Footer from "./components/Footer/Footer.js";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           element={<EditEntry />}
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

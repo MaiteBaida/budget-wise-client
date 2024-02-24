@@ -1,0 +1,27 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.footer {
+    background-color: $purple-black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__txt {
+        color: $white;
+    }
+    &__icon {
+        &-git {
+            width: 1.5rem;
+            margin-bottom: 4px;
+            margin-right: 4px;
+        }
+        &-linkedin {
+            width: 2rem;
+        }
+        &-container {
+            margin-bottom: 1rem;
+        }
+    }
+    
+}
