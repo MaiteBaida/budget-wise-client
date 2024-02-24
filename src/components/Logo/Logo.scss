@@ -3,9 +3,9 @@
 .logo {
     &__img {
         padding: 1rem;
-        width: 12rem;
+        width: 15rem;
         @include tablet {
-            width: 15rem;
+            width: 18rem;
         }
     }
 }
