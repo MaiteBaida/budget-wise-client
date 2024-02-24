@@ -1,0 +1,42 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.user {
+    margin: 1rem;
+    border-radius: 35px;
+    padding: 2.25rem 1rem;
+    background-color: $white;
+    @include tablet {
+        padding: 2.25rem;
+    }
+    @include desktop {
+        @include max-width;
+        margin-top: 2.25rem;
+    }
+    &__title {
+        margin-top: 0.625rem;
+        @include txt-mob-header;
+        @include tablet {
+            @include txt-header;
+        }
+    }
+    &__overview {
+        padding: 0.5rem 1rem;
+        border-radius: 35px;
+        margin-bottom: 1.25rem;
+        width: fit-content;
+        @include txt-mob-labels;
+        color: $black;
+        @include tablet {
+            @include txt-labels;
+        }
+        &--below {
+            background-color: $light-green;
+            color: $dark-green;
+        }
+        &--over {
+            background-color: $red-light;
+            color: $red-dark;
+        }
+    }
+}

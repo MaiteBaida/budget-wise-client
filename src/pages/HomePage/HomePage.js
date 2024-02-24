@@ -23,7 +23,7 @@ function HomePage() {
         headers: { Authorization: authToken },
       });
 
-      setUser(user);
+      setUser(user.data);
     } catch (error) {
       alert("User not found");
       nav("/login");
@@ -71,52 +71,36 @@ function HomePage() {
     (expense) => expense.type === "Non-Essential"
   );
 
-  const fetchExpenseById = async () => {
-    try {
-      const authToken = localStorage.getItem("authToken");
+  // const fetchExpenseById = async () => {
+  //   try {
+  //     const authToken = localStorage.getItem("authToken");
 
-      const config = {
-        headers: {
-          Authorization: authToken,
-        },
-      };
-      
-      const response = await axios.get(
-        `http://localhost:8000/expenses/${id}`,
-        config
-      );
-      console.log(id);
-      console.log(response);
+  //     const config = {
+  //       headers: {
+  //         Authorization: authToken,
+  //       },
+  //     };
 
-      setExpenseId(response.data.id);
-    } catch (error) {
-      console.error("Error fetching expenses:", error);
-    }
-  };
+  //     const response = await axios.get(
+  //       `http://localhost:8000/expenses/${id}`,
+  //       config
+  //     );
+  //     console.log(id);
+  //     console.log(response);
 
-  useEffect(() => {
-    fetchExpenseById();
-  }, [id]);
+  //     setExpenseId(response.data.id);
+  //   } catch (error) {
+  //     console.error("Error fetching expenses:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchExpenseById();
+  // }, [id]);
 
   useEffect(() => {
     fetchUser();
   }, []);
-
-  // const totalEntries = expensesList.data.value
-  //   .reduce((total, entry) => total + parseFloat(entry.value), 0)
-  //   .toFixed(2);
-
-  function totalEntries(expenses) {
-    expenses.forEach((expense) => {
-      let totalValue = 0;
-
-      expense.entries.forEach((entry) => {
-        totalValue += parseFloat(entry.value);
-      });
-
-      expense.totalEntryValue = totalValue.toFixed(2);
-    });
-  }
 
   if (!user) {
     return null;
@@ -132,19 +116,19 @@ function HomePage() {
               list={fixedExpenses}
               title="Fixed"
               type="Fixed"
-              total={totalEntries(fixedExpenses)}
+              // total={}
             />
             <DeskTabTable
               list={essentialExpenses}
               title="Essential"
               type="Essential"
-              total={totalEntries(essentialExpenses)}
+              // total={totalEntries(essentialExpenses)}
             />
             <DeskTabTable
               list={nonEssentialExpenses}
               title="Non-Essential"
               type="Non-Essential"
-              total={totalEntries(nonEssentialExpenses)}
+              // total={totalEntries(nonEssentialExpenses)}
             />
           </>
         ) : (
@@ -152,19 +136,19 @@ function HomePage() {
             <MobTable
               list={fixedExpenses}
               title="Fixed"
-              total={totalEntries(fixedExpenses)}
+              // total={totalEntries(fixedExpenses)}
               type="Fixed"
             />
             <MobTable
               list={essentialExpenses}
               title="Essential"
-              total={totalEntries(essentialExpenses)}
+              // // total={totalEntries(essentialExpenses)}
               type="Essential"
             />
             <MobTable
               list={nonEssentialExpenses}
               title="Non-Essential"
-              total={totalEntries(nonEssentialExpenses)}
+              // // total={totalEntries(nonEssentialExpenses)}
               type="Non-Essential"
             />
           </>
