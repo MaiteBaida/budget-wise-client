@@ -30,7 +30,7 @@ function DeskTabTable({ list, title, total, type }) {
     <section className="table">
       <div className="table__title-container">
         <h2 className="table__title">{title} Expenses</h2>
-        <div>
+        <div className="table__title-right">
           <span className="table__amount">${total} CAD</span>
           <button
             className="expand__icon-box"
@@ -73,7 +73,17 @@ function DeskTabTable({ list, title, total, type }) {
                   <p>${budget} CAD</p>
                 </div>
               </Link>
-              <div className="table__cell">${total_entries} CAD</div>
+              <div className="table__cell">
+                <p
+                  className={`table__entries ${
+                    budget >= total_entries
+                      ? "table__entries--below"
+                      : "table__entries--over"
+                  }`}
+                >
+                  ${total_entries} CAD
+                </p>
+              </div>
               <div className="table__cell table__cell--buttons">
                 <div className="expenses__button-container">
                   <Link to={`/expenses/${id}/entries/add`}>

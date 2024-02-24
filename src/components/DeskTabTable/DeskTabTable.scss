@@ -18,6 +18,10 @@
             justify-content: space-between;
             align-items: baseline;
         }
+        &-right {
+            display: flex;
+            align-items: center;
+        }
     }
     &__amount {
         @include txt-subheader;
@@ -49,6 +53,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+    }
+    &__entries {
+        padding: 0.5rem 1rem;
+        border-radius: 35px;
+        margin: 0;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        &--below {
+            background-color: $light-green;
+            color: $dark-green;
+        }
+        &--over {
+            background-color: $red-light;
+            color: $red-dark;
         }
     }
     &__add-icon {
