@@ -2,6 +2,7 @@ import "./ExpenseOverview.scss";
 import arrowleft from "../../assets/icons/arrow-left.svg";
 import edit from "../../assets/icons/edit.svg";
 import trashcan from "../../assets/icons/trash-can.svg";
+import Button from "../../components/Button/Button";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -94,7 +95,11 @@ function ExpenseOverview() {
       <div className="expense__header">
         <div className="expense__header-container">
           <button type="button" onClick={() => nav("/home")}>
-            <img className="expense__icon" src={arrowleft} alt="return icon" />
+            <img
+              className="expense__icon-arrowleft"
+              src={arrowleft}
+              alt="return icon"
+            />
           </button>
           <h1 className="expense__title">{expenseName}</h1>
         </div>
@@ -146,6 +151,17 @@ function ExpenseOverview() {
           deleteItem={deleteEntry}
         />
       )}
+      <div className="expense__add-button">
+        <Button
+          customClass="expense__add-entry"
+          style="primary"
+          type="button"
+          label="Add New Entry"
+          onClick={() => {
+            nav(`/expenses/${id}/entries/add`);
+          }}
+        />
+      </div>
     </main>
   );
 }

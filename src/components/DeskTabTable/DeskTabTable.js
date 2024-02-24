@@ -101,7 +101,7 @@ function DeskTabTable({ list, title, total, type }) {
             <Button
               style="primary"
               type="button"
-              label="Add expense"
+              label="Add Expense"
               onClick={handleAddItem}
             />
           </div>

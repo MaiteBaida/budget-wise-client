@@ -34,6 +34,13 @@
             @include txt-section-header;
         }
     }
+    &__subtitle {
+        @include txt-mob-subheader;
+        color: $silver;
+        @include tablet {
+            @include txt-subheader;
+        }
+    }
     &__entry {
         border-bottom: 1px solid $lightgray; 
         @include tablet {
@@ -56,5 +63,23 @@
             justify-content: space-around;
             padding: 1rem;
         }
+        &-arrowleft {
+            margin-top: 0.353rem;
+            width: 1.5rem;
+        }
     }
+    &__add {
+        &-entry {
+        @include tablet {
+            width: 9rem;
+        }
+    }
+        &-button {
+            @include tablet {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+    
 }
