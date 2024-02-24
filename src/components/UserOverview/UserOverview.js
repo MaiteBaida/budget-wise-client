@@ -1,4 +1,5 @@
 import "./UserOverview.scss";
+import Chart from "../Chart/Chart";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -38,6 +39,14 @@ function UserOverview() {
 
   const isBelow = user.userTotalBudget >= user.userTotalEntries;
 
+  const percentageUsed = (user.userTotalEntries / user.userTotalBudget) * 100;
+  const percentageLeft =
+    ((user.userTotalBudget - user.userTotalEntries) / user.userTotalBudget) *
+    100;
+
+  console.log("Percentage of budget used:", percentageUsed.toFixed(2) + "%");
+  console.log("Percentage of budget left:", percentageLeft.toFixed(2) + "%");
+
   return (
     <section className="user">
       <h1 className="user__title">Welcome, {user.first_name}!</h1>
@@ -52,6 +61,7 @@ function UserOverview() {
       </p>
       <p className="user__totals">Total Budget: ${user.userTotalBudget} </p>
       <p className="user__totals">Total Expenses: ${user.userTotalEntries}</p>
+      <Chart budgetLeft={percentageLeft} entries={percentageUsed} />
     </section>
   );
 }
