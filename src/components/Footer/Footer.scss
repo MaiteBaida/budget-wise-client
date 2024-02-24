@@ -7,6 +7,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include desktop {
+        margin-top: 2.25rem;
+    }
     &__txt {
         color: $white;
     }

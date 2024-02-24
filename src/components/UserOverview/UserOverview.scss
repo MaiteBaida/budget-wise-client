@@ -9,6 +9,8 @@
     @include tablet {
         padding: 2.25rem;
         margin: 2.25rem;
+        display: flex;
+        justify-content: space-between 
     }
     @include desktop {
         @include max-width;
@@ -40,4 +42,12 @@
             color: $red-dark;
         }
     }
+    // &__container {
+        // display: flex;
+        // justify-content: space-between;
+        // flex-direction: column;
+    // }
+    // &__chart {
+    //     width: 9rem;
+    // }
 }

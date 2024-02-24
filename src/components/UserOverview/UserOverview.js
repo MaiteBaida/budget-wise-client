@@ -49,19 +49,23 @@ function UserOverview() {
 
   return (
     <section className="user">
-      <h1 className="user__title">Welcome, {user.first_name}!</h1>
-      <p
-        className={`user__overview ${
-          isBelow ? "user__overview--below" : "user__overview--over"
-        }`}
-      >
-        This month you're $
-        {totalsOverview(user.userTotalBudget, user.userTotalEntries)}
-        CAD {isBelow ? "below" : "over"} buget!
-      </p>
-      <p className="user__totals">Total Budget: ${user.userTotalBudget} </p>
-      <p className="user__totals">Total Expenses: ${user.userTotalEntries}</p>
-      <Chart budgetLeft={percentageLeft} entries={percentageUsed} />
+      <div className="user__container">
+        <h1 className="user__title">Welcome, {user.first_name}!</h1>
+        <p
+          className={`user__overview ${
+            isBelow ? "user__overview--below" : "user__overview--over"
+          }`}
+        >
+          This month you're $
+          {totalsOverview(user.userTotalBudget, user.userTotalEntries)}
+          CAD {isBelow ? "below" : "over"} buget!
+        </p>
+        <p className="user__totals">Total Budget: ${user.userTotalBudget} </p>
+        <p className="user__totals">Total Expenses: ${user.userTotalEntries}</p>
+      </div>
+      <div className="user__chart">
+        <Chart budgetLeft={percentageLeft} entries={percentageUsed} />
+      </div>
     </section>
   );
 }
