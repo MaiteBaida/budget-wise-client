@@ -80,7 +80,7 @@ function HomePage() {
           Authorization: authToken,
         },
       };
-      
+
       const response = await axios.get(
         `http://localhost:8000/expenses/${id}`,
         config
@@ -101,10 +101,6 @@ function HomePage() {
   useEffect(() => {
     fetchUser();
   }, []);
-
-  // const totalEntries = expensesList.data.value
-  //   .reduce((total, entry) => total + parseFloat(entry.value), 0)
-  //   .toFixed(2);
 
   function totalEntries(expenses) {
     expenses.forEach((expense) => {
