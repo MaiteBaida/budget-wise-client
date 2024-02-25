@@ -16,6 +16,7 @@ function MobTable({ list, title, total, entriesValues, type }) {
     nav(`/expenses/add?type=${type}`);
   };
 
+  //function to expand table and see all expenses
   const toggleExpand = (id) => {
     setExpandedIds((prevState) => {
       if (prevState.includes(id)) {

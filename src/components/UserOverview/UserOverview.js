@@ -8,6 +8,7 @@ function UserOverview() {
   const nav = useNavigate();
   const [user, setUser] = useState({});
 
+  //authenticate user and get user's information including total budget and total spent
   const fetchUser = async () => {
     try {
       const authToken = await localStorage.getItem("authToken");
@@ -39,6 +40,7 @@ function UserOverview() {
 
   const isBelow = user.userTotalBudget >= user.userTotalEntries;
 
+  //Percentages to populate chart
   const percentageUsed = (user.userTotalEntries / user.userTotalBudget) * 100;
   const percentageLeft =
     ((user.userTotalBudget - user.userTotalEntries) / user.userTotalBudget) *

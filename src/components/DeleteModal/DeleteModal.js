@@ -6,15 +6,14 @@ const DeleteModal = ({ onClose, item, deleteItem }) => {
   return (
     <div className="delete__overlay">
       <div className="delete">
-        <a className="delete__close" onClick={onClose}>
+        <button className="delete__close" onClick={onClose}>
           <img className="delete__close-icon" src={close} />
-        </a>
+        </button>
         <h1 className="delete__title">Delete {item}?</h1>
         <p className="delete__txt">
           Please confirm that you'd like to delete {item}. You won't be able to
           undo this action.
         </p>
-        <div className="delete--filler"></div>
         <div className="delete__buttons">
           <div className="delete__button">
             <Button

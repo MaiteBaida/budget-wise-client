@@ -4,6 +4,7 @@ import linkedin from "../../assets/icons/linkedin.svg";
 import React, { useEffect } from "react";
 
 function Footer() {
+  //function to keep footer below the body content without making it fixed on screen
   useEffect(() => {
     function positionFooter() {
       const contentHeight = document.body.clientHeight;

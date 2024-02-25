@@ -1,5 +1,5 @@
-import React from 'react';
-import './Input.scss';
+import React from "react";
+import "./Input.scss";
 
 function Input({ name, placeholder, customClass, onChange, value, type }) {
   return (
