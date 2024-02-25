@@ -2,6 +2,7 @@
 @import '../../styles/partials/variables';
 
 .login {
+    height: 80vh;
     @include tablet {
         display: flex;
         justify-content: space-around;

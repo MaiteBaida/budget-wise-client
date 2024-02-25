@@ -1,0 +1,9 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+.home {
+    margin-bottom: 1rem;
+    @include tablet {
+        margin-bottom: 2.25rem;
+    }
+}

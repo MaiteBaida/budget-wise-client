@@ -1,3 +1,4 @@
+import "./HomePage.scss";
 import UserOverview from "../../components/UserOverview/UserOverview";
 import DeskTabTable from "../../components/DeskTabTable/DeskTabTable";
 import MobTable from "../../components/MobTable/MobTable";
@@ -60,7 +61,7 @@ function HomePage() {
   };
 
   return (
-    <section>
+    <section className="home">
       <UserOverview />
       <main>
         {isTableVisible ? (

@@ -4,7 +4,7 @@ import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import arrowleft from "../../assets/icons/arrow-left.svg";
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 const typeOptions = [
@@ -89,75 +89,73 @@ function AddExpense() {
     }
   };
 
-  const onCancel = () => {
-    nav("/home");
-  };
-
   return (
     <main className="expenses-add">
-      <div className="expenses-add__header">
-        <button type="button" onClick={() => nav("/home")}>
-          <img className="expenses-add__arrowleft" src={arrowleft} />
-        </button>
-        <h2 className="expenses-add__title">Add New Expense</h2>
-      </div>
-      <form onSubmit={handleSubmit} className="expenses-add__form">
-        <div className="expenses-add__info-container">
-          <div className="expenses-add__info">
-            <label className="expenses-add__label">EXPENSE NAME</label>
-            <Input
-              placeholder="Type an expense name"
-              customClass="expenses-add__input"
-              onChange={handleName}
-              required
-            />
-          </div>
-          <div className="expenses-add__info">
-            <label className="expenses-add__label">BUDGET</label>
-            <Input
-              placeholder="Define a budget"
-              customClass="expenses-add__input"
-              onChange={handleBudget}
-              required
-            />
-          </div>
-          <div className="expenses-add__info">
-            <label className="expenses-add__label">EXPENSE TYPE</label>
-            <Select
-              value={type}
-              placeholder="Select an expense type"
-              options={typeOptions}
-              customClass="expenses-add__input"
-              onChange={handleType}
-              required
-            />
-          </div>
-          {type === "Fixed" && (
+      <div className="expenses-add__card">
+        <div className="expenses-add__header">
+          <Link to="/home">
+            <img className="expenses-add__arrowleft" src={arrowleft} />
+          </Link>
+          <h2 className="expenses-add__title">Add New Expense</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="expenses-add__form">
+          <div className="expenses-add__info-container">
             <div className="expenses-add__info">
-              <label className="expenses-add__label">FREQUENCY</label>
-              <Select
-                placeholder="Select a frequency"
-                options={frequencyOptions}
+              <label className="expenses-add__label">EXPENSE NAME</label>
+              <Input
+                placeholder="Type an expense name"
                 customClass="expenses-add__input"
-                onChange={handleFrequency}
+                onChange={handleName}
                 required
               />
             </div>
-          )}
-        </div>
-        <div className="expenses-add__button-container">
-          <div className="expenses-add__buttons">
-            <Button
-              onClick={onCancel}
-              customClass="expenses-add__button"
-              type="button"
-              style="secondary"
-              label="Cancel"
-            />
-            <Button type="submit" style="primary" label="Add" />
+            <div className="expenses-add__info">
+              <label className="expenses-add__label">BUDGET</label>
+              <Input
+                placeholder="Define a budget"
+                customClass="expenses-add__input"
+                onChange={handleBudget}
+                required
+              />
+            </div>
+            <div className="expenses-add__info">
+              <label className="expenses-add__label">EXPENSE TYPE</label>
+              <Select
+                value={type}
+                placeholder="Select an expense type"
+                options={typeOptions}
+                customClass="expenses-add__input"
+                onChange={handleType}
+                required
+              />
+            </div>
+            {type === "Fixed" && (
+              <div className="expenses-add__info">
+                <label className="expenses-add__label">FREQUENCY</label>
+                <Select
+                  placeholder="Select a frequency"
+                  options={frequencyOptions}
+                  customClass="expenses-add__input"
+                  onChange={handleFrequency}
+                  required
+                />
+              </div>
+            )}
           </div>
-        </div>
-      </form>
+          <div className="expenses-add__button-container">
+            <div className="expenses-add__buttons">
+              <Button
+                onClick={() => nav("/home")}
+                customClass="expenses-add__button"
+                type="button"
+                style="secondary"
+                label="Cancel"
+              />
+              <Button type="submit" style="primary" label="Add" />
+            </div>
+          </div>
+        </form>
+      </div>
     </main>
   );
 }

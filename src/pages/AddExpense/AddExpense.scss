@@ -2,16 +2,20 @@
 @import '../../styles/partials/variables';
 
 .expenses-add {
-    margin: 1rem;
-    border-radius: 35px;
-    padding: 2.25rem 1rem;
-    background-color: $white;
-    @include tablet {
-        padding: 2.25rem;
-    }
-    @include desktop {
-        @include max-width;
-        margin-top: 2.25rem;
+    margin-bottom: 2.25rem;
+    min-height: 70vh;
+    &__card {
+        margin: 1rem;
+        border-radius: 35px;
+        padding: 2.25rem 1rem;
+        background-color: $white;
+        @include tablet {
+            padding: 2.25rem;
+        }
+        @include desktop {
+            @include max-width;
+            margin-top: 2.25rem;
+        }
     }
     &__header {
         display: flex;

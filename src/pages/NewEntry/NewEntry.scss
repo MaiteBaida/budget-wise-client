@@ -2,17 +2,23 @@
 @import '../../styles/partials/variables';
 
 .new-entry {
-    margin: 1rem;
-    border-radius: 35px;
-    border: 1px solid $lightgray;
-    padding: 2.25rem 1rem;
-    background-color: $white;
+    min-height: 70vh;
+    margin-bottom: 2.25rem;
     @include tablet {
-        padding: 2.25rem;
-    }
-    @include desktop {
-        @include max-width;
         margin-top: 2.25rem;
+    }
+    &__card {
+        margin: 1rem;
+        border-radius: 35px;
+        border: 1px solid $lightgray;
+        padding: 2.25rem 1rem;
+        background-color: $white;
+        @include tablet {
+            padding: 2.25rem;
+        }
+        @include desktop {
+            @include max-width;
+        }
     }
     &__header {
         display: flex;

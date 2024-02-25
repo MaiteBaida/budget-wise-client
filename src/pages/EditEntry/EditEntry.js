@@ -110,48 +110,54 @@ function EditEntry() {
 
   return (
     <main className="entry-edit">
-      <div className="entry-edit__header">
-        <button type="button" onClick={() => nav(`/expenses/${id}`)}>
-          <img className="entry-edit__arrowleft" src={arrowleft} alt="return" />
-        </button>
-        <h2 className="entry-edit__title">Edit {expenseName} Entry</h2>
+      <div className="entry-edit__card">
+        <div className="entry-edit__header">
+          <button type="button" onClick={() => nav(`/expenses/${id}`)}>
+            <img
+              className="entry-edit__arrowleft"
+              src={arrowleft}
+              alt="return"
+            />
+          </button>
+          <h2 className="entry-edit__title">Edit {expenseName} Entry</h2>
+        </div>
+        <form onSubmit={editExpense}>
+          <div className="entry-edit__info-container">
+            <div className="entry-edit__info">
+              <label className="entry-edit__label">ENTRY VALUE</label>
+              <Input
+                placeholder="Entry Value"
+                value={value}
+                customClass="entry-edit__input"
+                onChange={handleValue}
+                required
+              />
+            </div>
+            <div className="entry-edit__info">
+              <label className="entry-edit__label">Notes:</label>
+              <textarea
+                placeholder="Add notes"
+                value={notes}
+                className="entry-edit__txtarea"
+                onChange={handleNotes}
+                required
+              />
+            </div>
+          </div>
+          <div className="entry-edit__button-container">
+            <div className="entry-edit__buttons">
+              <Button
+                onClick={onCancel}
+                customClass="entry-edit__button"
+                type="button"
+                style="secondary"
+                label="Cancel"
+              />
+              <Button type="submit" style="primary" label="Save" />
+            </div>
+          </div>
+        </form>
       </div>
-      <form onSubmit={editExpense}>
-        <div className="entry-edit__info-container">
-          <div className="entry-edit__info">
-            <label className="entry-edit__label">ENTRY VALUE</label>
-            <Input
-              placeholder="Entry Value"
-              value={value}
-              customClass="entry-edit__input"
-              onChange={handleValue}
-              required
-            />
-          </div>
-          <div className="entry-edit__info">
-            <label className="entry-edit__label">Notes:</label>
-            <textarea
-              placeholder="Add notes"
-              value={notes}
-              className="entry-edit__txtarea"
-              onChange={handleNotes}
-              required
-            />
-          </div>
-        </div>
-        <div className="entry-edit__button-container">
-          <div className="entry-edit__buttons">
-            <Button
-              onClick={onCancel}
-              customClass="entry-edit__button"
-              type="button"
-              style="secondary"
-              label="Cancel"
-            />
-            <Button type="submit" style="primary" label="Save" />
-          </div>
-        </div>
-      </form>
     </main>
   );
 }

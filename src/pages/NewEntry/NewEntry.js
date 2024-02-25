@@ -86,51 +86,56 @@ function NewEntry() {
   }, [id]);
 
   const onCancel = () => {
-    // nav(`/expenses/${id}`);
     nav(-1);
   };
 
   return (
     <main className="new-entry">
-      <div className="new-entry__header">
-        <button type="button" onClick={() => nav(-2)}>
-          <img className="new-entry__arrowleft" src={arrowleft} alt="return" />
-        </button>
-        <h2 className="new-entry__title">Add New Entry to {expenseName}</h2>
+      <div className="new-entry__card">
+        <div className="new-entry__header">
+          <button type="button" onClick={onCancel}>
+            <img
+              className="new-entry__arrowleft"
+              src={arrowleft}
+              alt="return"
+            />
+          </button>
+          <h2 className="new-entry__title">Add New Entry to {expenseName}</h2>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="new-entry__info-container">
+            <div className="new-entry__info">
+              <label className="new-entry__label">ENTRY VALUE</label>
+              <Input
+                placeholder="Entry Value"
+                customClass="new-entry__input"
+                onChange={handleValue}
+                required
+              />
+            </div>
+            <div className="new-entry__info">
+              <label className="new-entry__label">Notes:</label>
+              <textarea
+                placeholder="Add notes"
+                className="new-entry__txtarea"
+                onChange={handleNotes}
+              />
+            </div>
+          </div>
+          <div className="new-entry__button-container">
+            <div className="new-entry__buttons">
+              <Button
+                onClick={onCancel}
+                customClass="new-entry__button"
+                type="button"
+                style="secondary"
+                label="Cancel"
+              />
+              <Button type="submit" style="primary" label="Save" />
+            </div>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="new-entry__info-container">
-          <div className="new-entry__info">
-            <label className="new-entry__label">ENTRY VALUE</label>
-            <Input
-              placeholder="Entry Value"
-              customClass="new-entry__input"
-              onChange={handleValue}
-              required
-            />
-          </div>
-          <div className="new-entry__info">
-            <label className="new-entry__label">Notes:</label>
-            <textarea
-              placeholder="Add notes"
-              className="new-entry__txtarea"
-              onChange={handleNotes}
-            />
-          </div>
-        </div>
-        <div className="new-entry__button-container">
-          <div className="new-entry__buttons">
-            <Button
-              onClick={onCancel}
-              customClass="new-entry__button"
-              type="button"
-              style="secondary"
-              label="Cancel"
-            />
-            <Button type="submit" style="primary" label="Save" />
-          </div>
-        </div>
-      </form>
     </main>
   );
 }

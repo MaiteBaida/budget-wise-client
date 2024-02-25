@@ -6,7 +6,7 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import arrowleft from "../../assets/icons/arrow-left.svg";
 import trashcan from "../../assets/icons/trash-can.svg";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const typeOptions = [
@@ -107,10 +107,6 @@ function EditExpense() {
     }
   };
 
-  const onCancel = () => {
-    nav("/home");
-  };
-
   useEffect(() => {
     fetchExpense();
   }, [id]);
@@ -144,82 +140,84 @@ function EditExpense() {
 
   return (
     <main className="expenses-edit">
-      <div className="expenses-edit__header">
-        <button type="button" onClick={() => nav("/home")}>
-          <img className="expenses-edit__arrowleft" src={arrowleft} />
-        </button>
-        <h2 className="expenses-edit__title">Edit {name}</h2>
-      </div>
-      <form onSubmit={saveExpense} className="expenses-edit__form">
-        <div className="expenses-edit__info-container">
-          <div className="expenses-edit__info">
-            <label className="expenses-edit__label">EXPENSE NAME</label>
-            <Input
-              placeholder="Name your expense"
-              value={name}
-              customClass="expenses-edit__input"
-              onChange={handleName}
-              required
-            />
-          </div>
-          <div className="expenses-edit__info">
-            <label className="expenses-edit__label">BUDGET</label>
-            <Input
-              placeholder="Define a budget"
-              value={budget}
-              customClass="expenses-edit__input"
-              onChange={handleBudget}
-              required
-            />
-          </div>
-          <div className="expenses-edit__info">
-            <label className="expenses-edit__label">EXPENSE TYPE</label>
-            <Select
-              placeholder="Select an expense type"
-              value={type}
-              options={typeOptions}
-              customClass="expenses-edit__input"
-              onChange={handleType}
-              required
-            />
-          </div>
-          {type === "Fixed" && (
+      <div className="expenses-edit__card">
+        <div className="expenses-edit__header">
+          <Link to="/home">
+            <img className="expenses-edit__arrowleft" src={arrowleft} />
+          </Link>
+          <h2 className="expenses-edit__title">Edit {name}</h2>
+        </div>
+        <form onSubmit={saveExpense} className="expenses-edit__form">
+          <div className="expenses-edit__info-container">
             <div className="expenses-edit__info">
-              <label className="expenses-edit__label">FREQUENCY</label>
-              <Select
-                placeholder="Select a frequency"
-                value={frequency}
-                options={frequencyOptions}
+              <label className="expenses-edit__label">EXPENSE NAME</label>
+              <Input
+                placeholder="Name your expense"
+                value={name}
                 customClass="expenses-edit__input"
-                onChange={handleFrequency}
+                onChange={handleName}
                 required
               />
             </div>
-          )}
-        </div>
-        <div className="expenses-edit__button-container">
-          <div className="expenses-edit__buttons">
-            <Button
-              onClick={onCancel}
-              customClass="expenses-edit__button"
-              type="button"
-              style="secondary"
-              label="Cancel"
-            />
-            <Button type="submit" style="primary" label="Save" />
+            <div className="expenses-edit__info">
+              <label className="expenses-edit__label">BUDGET</label>
+              <Input
+                placeholder="Define a budget"
+                value={budget}
+                customClass="expenses-edit__input"
+                onChange={handleBudget}
+                required
+              />
+            </div>
+            <div className="expenses-edit__info">
+              <label className="expenses-edit__label">EXPENSE TYPE</label>
+              <Select
+                placeholder="Select an expense type"
+                value={type}
+                options={typeOptions}
+                customClass="expenses-edit__input"
+                onChange={handleType}
+                required
+              />
+            </div>
+            {type === "Fixed" && (
+              <div className="expenses-edit__info">
+                <label className="expenses-edit__label">FREQUENCY</label>
+                <Select
+                  placeholder="Select a frequency"
+                  value={frequency}
+                  options={frequencyOptions}
+                  customClass="expenses-edit__input"
+                  onChange={handleFrequency}
+                  required
+                />
+              </div>
+            )}
           </div>
-          <button type="button" onClick={openModal}>
-            <img className="expenses-edit__delete" src={trashcan} />
-          </button>
-        </div>
-      </form>
-      {modalOpen && (
-        <DeleteModal
-          onClose={closeModal}
-          item={name}
-          deleteItem={deleteExpense}
-        />
-      )}
+          <div className="expenses-edit__button-container">
+            <div className="expenses-edit__buttons">
+              <Button
+                onClick={() => nav("/home")}
+                customClass="expenses-edit__button"
+                type="button"
+                style="secondary"
+                label="Cancel"
+              />
+              <Button type="submit" style="primary" label="Save" />
+            </div>
+            <button type="button" onClick={openModal}>
+              <img className="expenses-edit__delete" src={trashcan} />
+            </button>
+          </div>
+        </form>
+        {modalOpen && (
+          <DeleteModal
+            onClose={closeModal}
+            item={name}
+            deleteItem={deleteExpense}
+          />
+        )}
+      </div>
     </main>
   );
 }
