@@ -37,6 +37,7 @@ function EditEntry() {
     }
   };
 
+  //get the expense that the entry belongs to
   const fetchExpenseName = async () => {
     try {
       const authToken = localStorage.getItem("authToken");

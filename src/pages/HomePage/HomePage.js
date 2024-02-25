@@ -21,6 +21,15 @@ function HomePage() {
     }
   };
 
+  //make table component visible or not depending on the screen size
+  const handleScreenResize = () => {
+    if (window.innerWidth >= 780) {
+      setIsTableVisible(true);
+    } else {
+      setIsTableVisible(false);
+    }
+  };
+
   useEffect(() => {
     getExpensesList();
     handleScreenResize();
@@ -30,14 +39,7 @@ function HomePage() {
     };
   }, []);
 
-  const handleScreenResize = () => {
-    if (window.innerWidth >= 780) {
-      setIsTableVisible(true);
-    } else {
-      setIsTableVisible(false);
-    }
-  };
-
+  //filter expenses by type
   const fixedExpenses = expensesList.filter(
     (expense) => expense.type === "Fixed"
   );
