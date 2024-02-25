@@ -15,20 +15,22 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/expenses/add" element={<AddExpense />} />
-        <Route path="/expenses/:id" element={<ExpenseOverview />} />
-        <Route path="/expenses/:id/edit" element={<EditExpense />} />
-        <Route path="/expenses/:id/entries/add" element={<NewEntry />} />
-        <Route
-          path="/expenses/:id/entries/:entryid/edit"
-          element={<EditEntry />}
-        />
-      </Routes>
-      <Footer />
+      <div className="app__container">
+        <Routes>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/expenses/add" element={<AddExpense />} />
+          <Route path="/expenses/:id" element={<ExpenseOverview />} />
+          <Route path="/expenses/:id/edit" element={<EditExpense />} />
+          <Route path="/expenses/:id/entries/add" element={<NewEntry />} />
+          <Route
+            path="/expenses/:id/entries/:entryid/edit"
+            element={<EditEntry />}
+          />
+        </Routes>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

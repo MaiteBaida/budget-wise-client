@@ -2,13 +2,14 @@
 @import '../../styles/partials/variables';
 
 .footer {
+    width: 100%;
     background-color: $purple-black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     @include desktop {
-        margin-top: 2.25rem;
+        margin-top: 10vh;
     }
     &__txt {
         color: $white;

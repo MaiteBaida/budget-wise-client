@@ -5,7 +5,7 @@ import "./Chart.scss";
 function Chart({ budgetLeft, entries }) {
   return (
     <PieChart
-      colors={["#04D196", "#7633E3"]}
+      colors={["#8F8E8E", "#04D196"]}
       series={[
         {
           data: [
