@@ -70,12 +70,12 @@ function MobTable({ list, title, total, entriesValues, type }) {
               <p className="expenses__header">TOTAL ENTRIES</p>
               <p
                 className={`expenses__entries ${
-                  budget >= total_entries
+                  budget > (total_entries || 0)
                     ? "expenses__entries--below"
                     : "expenses__entries--over"
                 }`}
               >
-                ${budget} CAD
+                ${total_entries || 0} CAD
               </p>
             </div>
             <div className="expenses__buttons">

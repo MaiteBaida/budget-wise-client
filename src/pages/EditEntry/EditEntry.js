@@ -141,7 +141,6 @@ function EditEntry() {
                 value={notes}
                 className="entry-edit__txtarea"
                 onChange={handleNotes}
-                required
               />
             </div>
           </div>

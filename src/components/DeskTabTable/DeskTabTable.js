@@ -77,12 +77,12 @@ function DeskTabTable({ list, title, total, type }) {
               <div className="table__cell">
                 <p
                   className={`table__entries ${
-                    budget >= total_entries
+                    budget > (total_entries || 0)
                       ? "table__entries--below"
                       : "table__entries--over"
                   }`}
                 >
-                  ${total_entries} CAD
+                  ${total_entries || 0} CAD
                 </p>
               </div>
               <div className="table__cell table__cell--buttons">
