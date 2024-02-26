@@ -28,6 +28,7 @@ function UserOverview() {
     fetchUser();
   }, []);
 
+  //Total Budget and Entries calculation
   const totalsOverview = (userTotalBudget, userTotalEntries) => {
     const totalsOverview = userTotalBudget - userTotalEntries;
 
