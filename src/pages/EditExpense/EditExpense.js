@@ -114,7 +114,6 @@ function EditExpense() {
   const deleteExpense = async (e) => {
     try {
       const authToken = localStorage.getItem("authToken");
-
       const config = {
         headers: {
           Authorization: authToken,
@@ -123,7 +122,7 @@ function EditExpense() {
 
       await axios.delete(`http://localhost:8000/expenses/${id}`, config);
       closeModal();
-      alert("Your expense has been deleted");
+      alert("Your expense and entries have been deleted");
       nav("/home");
     } catch (error) {
       console.error("Error deleting item:", error);

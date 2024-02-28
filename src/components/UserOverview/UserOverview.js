@@ -47,9 +47,6 @@ function UserOverview() {
     ((user.userTotalBudget - user.userTotalEntries) / user.userTotalBudget) *
     100;
 
-  console.log("Percentage of budget used:", percentageUsed.toFixed(2) + "%");
-  console.log("Percentage of budget left:", percentageLeft.toFixed(2) + "%");
-
   return (
     <section className="user">
       <div className="user__container">
